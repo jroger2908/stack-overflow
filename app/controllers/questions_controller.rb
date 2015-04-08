@@ -30,6 +30,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    if @quetion &&question.update(question_params)
+      redirect_to question_path(@question_path)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

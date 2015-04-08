@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :question
-  has_many :votes, as: :parent
-  has_many :responses, as: :parent
+  has_many :votes, as: :votable
+  has_many :comments, as: :commentable
 
 end

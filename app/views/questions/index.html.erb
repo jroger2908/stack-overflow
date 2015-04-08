@@ -1,0 +1,10 @@
+<h1>Questions index</h1>
+
+<div class="container">
+  <% @questions.each do |question| %>
+    <div>
+      <p><%= link_to question.title, question_path(question) %> | <%= question.votes %></p>
+      <p><%= question.body %> </p> 
+    </div>
+  <% end %>
+</div>

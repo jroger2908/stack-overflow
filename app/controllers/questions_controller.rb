@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @question = Question.new()
   end
 
   def show
@@ -26,6 +27,12 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     redirect_to root_path
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :body)
   end
 
 end

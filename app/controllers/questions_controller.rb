@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    
+    @question = current_user.questions.find(params[:id])
   end
 
   def update

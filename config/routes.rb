@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :routes, only [:new, :create, :destroy]
+
   resources :users
 
   resources :questions do

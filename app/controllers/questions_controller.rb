@@ -9,6 +9,16 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @user = User.find_by(id: session[:id])
+    @question = Question.new(question_params).merge({user: @user})
+
+    if @question.save 
+      redirect_to question_path(@question)
+    else
+      @errors = "Your question is invalid. Please try again"
+
+      redirect_to root_path
+    end
   end
 
   def show
@@ -16,9 +26,15 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = current_user.questions.find(params[:id])
   end
 
   def update
+    if @quetion &&question.update(question_params)
+      redirect_to question_path(@question_path)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -26,6 +42,12 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     redirect_to root_path
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :body)
   end
 
 end

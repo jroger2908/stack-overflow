@@ -9,7 +9,16 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new()
+    @user = User.find_by(id: session[:id])
+    @question = Question.new(question_params).merge({user: @user})
+
+    if @question.save 
+      redirect_to question_path(@question)
+    else
+      @errors = "Your question is invalid. Please try again"
+
+      redirect_to root_path
+    end
   end
 
   def show
@@ -17,6 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update

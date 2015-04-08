@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :responses
+
   resources :votes
 
   resources :users

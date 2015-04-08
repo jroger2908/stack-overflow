@@ -1,0 +1,39 @@
+<h1> Welcome YOU </h1>
+
+<img src="http://www.havanacasaparticular.com/inc/ewbv61.asp?fn=%2Fuploads%2FLos%2DVan%2DVan%2Din%2DMiami%2Ejpg&width=600&height=0" alt="Mountain View" style="width:304px;height:228px">
+
+<table>
+	<tr>
+		<td> Name </td>
+		<td><%= @user.name %></td>
+	</tr>
+	<tr>
+		<td> Location </td>
+		<td><%= @user.location %> </td>
+	</tr>
+	<tr>
+		<td> Aboout me </td>
+		<td><%=  %> </td>
+	</tr>
+	
+</table>
+
+
+
+<h3>Questions:</h3>
+<table>
+<% @questions.each do |question| %>
+<tr>
+  <td>votes: <%= question.votes.count %></td>
+  <td>answers:<%= question.answers.count %> </td>
+  <td><p><%= link_to question.title  %></p></td>
+ </tr>
+<% end %>
+</table>
+
+<h3>Answers:</h3>
+<ol>
+<% @answers.each do |answer| %>
+  <li><%= link_to answer.title  %></li>
+<% end %>
+</ol>

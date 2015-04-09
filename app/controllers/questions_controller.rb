@@ -34,8 +34,10 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @quetion &&question.update(question_params)
-      redirect_to question_path(@question_path)
+    @question = Question.find_by(id: params[:id])
+
+    if @question && @question.update(question_params)
+      redirect_to @question
     else
       render 'edit'
     end

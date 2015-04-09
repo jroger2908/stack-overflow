@@ -8,7 +8,10 @@
     <% @question.answers.each do |answer| %>
       <div>
         <h3><%= answer.title %></h3>
-        <p><%= answer.body %></p>
+        <p><%= answer.body %> </p>
+        <p><%= link_to "Edit", edit_question_answer_path(@question,answer) %>
+           <%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'btn btn-link', id: 'logout-button' %>
+        </p>
       </div>
     <% end %>
   </div>

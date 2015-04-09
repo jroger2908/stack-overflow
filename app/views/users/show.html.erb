@@ -1,39 +1,102 @@
-<h1> Welcome YOU </h1>
+<head>
+   <style>
+      body {
+      background-color: white;
+      }
+      h1 {
+      color: maroon;
+      margin-left: 40px;
+      } 
+      div.question-container {
+      position:relative;
+      width: 80%;
+      background-color: #D6E4FF;
+      margin-bottom: 0.8em;
+      }
+      div.question {
+      position:relative;
+      display: inline-block;
+      margin-top: 0.3em;
+      margin-bottom: 0.3em;
+      }
 
-<img src="http://www.havanacasaparticular.com/inc/ewbv61.asp?fn=%2Fuploads%2FLos%2DVan%2DVan%2Din%2DMiami%2Ejpg&width=600&height=0" alt="Mountain View" style="width:304px;height:228px">
+      div.arguments {
+      font-size: 2em;
+      border-right: solid;
+      }
 
-<table>
-	<tr>
-		<td> Name </td>
-		<td><%= @user.name %></td>
-	</tr>
-	<tr>
-		<td> Location </td>
-		<td><%= @user.location %> </td>
-	</tr>
-	<tr>
-		<td> Aboout me </td>
-		<td><%=  %> </td>
-	</tr>
-	
-</table>
+      div.arguments p{
+      	margin: auto;
+        font-size: 0.6em;
+        padding: 0.6em;
+      }
+ 
+      #content-box {
+      	position: relative;
+      	width: 70%;
+      	left: 5em;
+      }
+
+      .profile-box {
+      	position: relative;
+      	width: 40%;
+      	left: 5em;
+      }
+
+      .profile-info {
+        display: inline-block;
+        padding: 1em;
+      }
 
 
+   </style>
+</head>
+<link rel="stylesheet" href="/css/application.css">
 
-<h3>Questions:</h3>
-<table>
-<% @questions.each do |question| %>
-<tr>
-  <td>votes: <%= question.votes.count %></td>
-  <td>answers:<%= question.answers.count %> </td>
-  <td><p><%= link_to question.title  %></p></td>
- </tr>
-<% end %>
-</table>
+<div class="jumbotron profile-box">
+  <div class="profile-info">
+   <img src="http://www.havanacasaparticular.com/inc/ewbv61.asp?fn=%2Fuploads%2FLos%2DVan%2DVan%2Din%2DMiami%2Ejpg&width=600&height=0" alt="Mountain View" style="width:304px;height:228px">
+   </div>
+   <div class="profile-info">
+   <h4>User Information</h4>
+   <table>
+      <tr>
+         <td> Name </td>
+         <td><%= @user.name %></td>
+      </tr>
+      <tr>
+         <td> Location </td>
+         <td><%= @user.location %> </td>
+      </tr>
+      <tr>
+         <td> Aboout me </td>
+         <td><%=  %> </td>
+      </tr>
+   </table>
+   </div>
+</div>
+
+<div id="content-box">
+
+<h3>Your Top Five Most Voted Questions:</h3>
+  <% @questions.each do |question| %>
+<div class="question-container">
+   <div class="question arguments">
+      <p>Votes: <%= question.votes.count %></p>
+   </div>
+   <div class="question arguments">
+      <p>Answers:<%= question.answers.count %> </p>
+   </div>
+   <div class="question diplay">
+      <p><%= link_to question.title, question_path(question)  %></p>
+   </div>
+</div>
+ <% end %>
 
 <h3>Answers:</h3>
 <ol>
-<% @answers.each do |answer| %>
-  <li><%= link_to answer.title  %></li>
-<% end %>
+   <% @answers.each do |answer| %>
+   <li><%= link_to answer.title  %></li>
+   <% end %>
 </ol>
+</div>

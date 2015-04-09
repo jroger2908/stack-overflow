@@ -1,25 +1,30 @@
-<h1>Create User</h1>
-
-  <%= form_for @user do |f| %>
-  <p>
-  <%= f.label :name %><br>
-  <%= f.email_field :name %>
-  </p>
-  <p>
-  <%= f.label :username %><br>
-  <%= f.email_field :username %>
-  </p>
-  <p>
-  <%= f.label :location %><br>
-  <%= f.email_field :location %>
-  </p>
-  <p>
-  <%= f.label :password %><br>
-  <%= f.password_field :password %>
-  </p>
-  <p>
-  <%= f.label :confirm_password %><br>
-  <%= f.password_field :password_confirmation %>
-  </p>
-  <%= f.submit "Create User" %>
-<% end %>
+<div class="login_box">
+  <h3>Create User</h3>
+  <div class="login_field">
+    <%= form_for @user do |f| %>
+      <p>
+      <%= f.label :name %><br>
+      <%= f.email_field :name %>
+      </p>
+      <p>
+      <%= f.label :username %><br>
+      <%= f.email_field :username %>
+      </p>
+      <p>
+      <%= f.label :location %><br>
+      <%= f.email_field :location %>
+      </p>
+      <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+      </p>
+      <p>
+      <%= f.label :confirm_password %><br>
+      <%= f.password_field :password_confirmation %>
+      </p>
+      <div class="sign_in_button">
+        <%= f.submit "Create User" %>
+      </div>
+    <% end %>
+  </div>
+</div>

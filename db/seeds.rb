@@ -1,20 +1,20 @@
 require 'faker'
 
-vanvan = User.create(name: 'VanVan',
+vanvan = User.create!(name: 'VanVan',
 		     location: 'Cuba',
 		     username: 'aquinomas',
-		     password_digest: 'aquinomas')
+		     password: 'aquinomas')
 
-vanvan = User.all.first
+# vanvan = User.all.first
 
 10.times do 
-	vanvan.questions.create(title: Faker::Lorem.sentence,
+	vanvan.questions.create!(title: Faker::Lorem.sentence(2),
 		                       body: Faker::Lorem.paragraph)
 end
 
 Question.all.each do |question|
 	3.times do
-	 question.answers.create(title: Faker::Lorem.sentence,
+	 question.answers.create!(title: Faker::Lorem.sentence(2),
 			                     body: Faker::Lorem.paragraph,
 			                     user: vanvan)
 	end

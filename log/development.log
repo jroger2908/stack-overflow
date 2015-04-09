@@ -36,3 +36,1270 @@ Migrating to CreateComments (20150408200332)
   [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
   [1m[35m (0.1ms)[0m  rollback transaction
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36m (196.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (131.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateQuestions (20150408184913)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408184913"]]
+  [1m[35m (104.3ms)[0m  commit transaction
+Migrating to CreateAnswers (20150408190345)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408190345"]]
+  [1m[35m (129.0ms)[0m  commit transaction
+Migrating to CreateUsers (20150408190856)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408190856"]]
+  [1m[35m (128.1ms)[0m  commit transaction
+Migrating to CreateVotes (20150408191913)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408191913"]]
+  [1m[35m (128.3ms)[0m  commit transaction
+Migrating to CreateComments (20150408200332)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408200332"]]
+  [1m[35m (133.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$TLgWyhXkZz7//iKtHBEteOiQAArNK55zA.QHj/DdAmYomTLbzwHwa"], ["created_at", "2015-04-09 00:12:54.411148"], ["updated_at", "2015-04-09 00:12:54.411148"]]
+  [1m[36m (126.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36m (294.5ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (217.1ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (186.4ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (202.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (247.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (228.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (275.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (265.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (190.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (144.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (146.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36m (130.2ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (211.3ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (200.0ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (143.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (132.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (135.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$8RXB36LH9NANe0UGfFkoPOwbu2qvzXCl036tmH22NFhtYX87gqPzq"], ["created_at", "2015-04-09 00:13:24.631157"], ["updated_at", "2015-04-09 00:13:24.631157"]]
+  [1m[36m (132.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Dolores ut et corporis hic pariatur aut veniam id."], ["body", "Dolor maiores voluptatibus deserunt possimus sit fugiat. Eum debitis quibusdam. Inventore officiis hic a repellat ea. Accusamus quas neque est beatae blanditiis. Nam dolor fuga doloremque in."], ["user_id", 1], ["created_at", "2015-04-09 00:13:26.684669"], ["updated_at", "2015-04-09 00:13:26.684669"]]
+  [1m[35m (165.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Cumque et nihil cupiditate exercitationem ab."], ["body", "Est laborum aut distinctio dolores et voluptates. Vel voluptatem quo eligendi atque aut. Magni ea iure ut."], ["user_id", 1], ["created_at", "2015-04-09 00:13:26.854803"], ["updated_at", "2015-04-09 00:13:26.854803"]]
+  [1m[36m (127.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Quis autem id quibusdam nihil corporis."], ["body", "Et perspiciatis quia expedita quis exercitationem corrupti. Necessitatibus laborum consequatur est dolores quia. Cum possimus et amet ipsum repudiandae sit illum. Eligendi quia dolores unde consequatur ut."], ["user_id", 1], ["created_at", "2015-04-09 00:13:26.987823"], ["updated_at", "2015-04-09 00:13:26.987823"]]
+  [1m[35m (128.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Eius ea aliquam sed incidunt."], ["body", "In labore tempora quia explicabo est ullam facere. Voluptatem facilis et ut illo voluptates. Magnam odit doloribus labore voluptatum. Saepe dolorem eum eum."], ["user_id", 1], ["created_at", "2015-04-09 00:13:27.122094"], ["updated_at", "2015-04-09 00:13:27.122094"]]
+  [1m[36m (150.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Quia repellendus magni quaerat architecto velit iusto."], ["body", "Consectetur necessitatibus officiis vel. Provident et vitae cumque asperiores eveniet dolores ratione. Alias optio nemo perferendis libero. Et itaque qui."], ["user_id", 1], ["created_at", "2015-04-09 00:13:27.278165"], ["updated_at", "2015-04-09 00:13:27.278165"]]
+  [1m[35m (139.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Consequatur nisi reprehenderit dignissimos fugit dolore eum."], ["body", "Consectetur quos eveniet voluptates enim. Excepturi rerum omnis sapiente. Esse iure quasi et quia. Ad similique quidem nobis quas sequi. Ut illo ad odit harum praesentium sit temporibus."], ["user_id", 1], ["created_at", "2015-04-09 00:13:27.423126"], ["updated_at", "2015-04-09 00:13:27.423126"]]
+  [1m[36m (150.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Molestiae ut debitis ipsum voluptas dolor maiores repudiandae."], ["body", "Et dolorum ducimus accusantium officiis provident. Delectus rerum sunt. Totam ad sequi soluta. Non quibusdam culpa incidunt officia maxime dolore possimus. Minus consequatur est dolor quisquam sit ab commodi."], ["user_id", 1], ["created_at", "2015-04-09 00:13:27.579047"], ["updated_at", "2015-04-09 00:13:27.579047"]]
+  [1m[35m (150.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Dolorem aut vel provident fugit cupiditate."], ["body", "Quia similique delectus veritatis neque incidunt laboriosam saepe. Corporis quia expedita. Quis corrupti eos fuga. Qui laborum ratione delectus sequi reiciendis. Voluptatem eum aliquam laborum sed."], ["user_id", 1], ["created_at", "2015-04-09 00:13:27.735265"], ["updated_at", "2015-04-09 00:13:27.735265"]]
+  [1m[36m (150.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Voluptas molestiae aut odio repudiandae."], ["body", "Voluptatem itaque et eum architecto explicabo reprehenderit. Et aut qui sint et sunt libero. Odit ipsam omnis. Atque dolore enim soluta in sed eum sapiente."], ["user_id", 1], ["created_at", "2015-04-09 00:13:27.891214"], ["updated_at", "2015-04-09 00:13:27.891214"]]
+  [1m[35m (150.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Numquam voluptatem ipsam ut."], ["body", "Voluptate aspernatur quis. Nemo ut qui molestiae aut repudiandae provident. Consequatur impedit nesciunt fugit ad aut dolor."], ["user_id", 1], ["created_at", "2015-04-09 00:13:28.047121"], ["updated_at", "2015-04-09 00:13:28.047121"]]
+  [1m[36m (150.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT "questions".* FROM "questions"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Illo laboriosam repellendus in."], ["body", "Eius esse explicabo laboriosam est ab ut. Nobis suscipit nihil blanditiis. Eos facilis aliquid dolores aut officia molestiae."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:13:28.228057"], ["updated_at", "2015-04-09 00:13:28.228057"]]
+  [1m[36m (125.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Error doloribus et aperiam quia nostrum maiores deserunt."], ["body", "Voluptatem omnis eius. Consequuntur tempora ab labore nostrum facere omnis quaerat. Tenetur voluptatem quia suscipit ut. Enim est quia et."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:13:28.359649"], ["updated_at", "2015-04-09 00:13:28.359649"]]
+  [1m[35m (127.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Perspiciatis iusto dolorum quaerat qui earum vel amet."], ["body", "Ex est sint nam eum perspiciatis. Quia ex tenetur alias molestiae. Et consequuntur libero quia illum facere nihil."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:13:28.492644"], ["updated_at", "2015-04-09 00:13:28.492644"]]
+  [1m[36m (140.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Et fugiat at aut sunt mollitia omnis soluta nam."], ["body", "Sit asperiores illum quia. Et omnis quia sit. Dolorum quia repellat. Facilis doloremque maxime rerum voluptas tempore."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:13:28.639720"], ["updated_at", "2015-04-09 00:13:28.639720"]]
+  [1m[35m (151.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Incidunt quas architecto sint."], ["body", "Et et voluptas ut quas perspiciatis magnam hic. Unde voluptatem veritatis nulla dicta. Non eius ullam unde. Sit quis ut aut doloremque."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:13:28.796928"], ["updated_at", "2015-04-09 00:13:28.796928"]]
+  [1m[36m (139.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Autem atque sed quam in unde culpa."], ["body", "Error atque dolorum. Aut nihil architecto eum et velit a dolores. Pariatur saepe vitae sequi velit non rerum."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:13:28.942208"], ["updated_at", "2015-04-09 00:13:28.942208"]]
+  [1m[35m (138.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Veritatis ad ea eos explicabo eligendi."], ["body", "Dicta esse totam. Illo voluptas est aut delectus cupiditate expedita sit. Dolores temporibus tempore totam quasi sint quis."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:13:29.087523"], ["updated_at", "2015-04-09 00:13:29.087523"]]
+  [1m[36m (138.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Nihil est architecto corporis ipsa rerum esse doloremque incidunt."], ["body", "Id ut labore sint. Neque suscipit voluptas animi accusantium reprehenderit pariatur. Illo et eaque expedita quisquam delectus. Ducimus dolore sunt animi voluptatum tempora dolores. Eum et voluptas sed doloremque id neque eligendi."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:13:29.232071"], ["updated_at", "2015-04-09 00:13:29.232071"]]
+  [1m[35m (127.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Magnam ullam amet eaque eos nobis optio iste."], ["body", "Cupiditate velit repellendus ullam laboriosam culpa quibusdam perspiciatis. Et et impedit unde delectus voluptatibus aut. Atque voluptatum deleniti ea sapiente ut eos. Et culpa tenetur id."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:13:29.413641"], ["updated_at", "2015-04-09 00:13:29.413641"]]
+  [1m[36m (146.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Qui commodi ex deserunt doloribus voluptatem."], ["body", "Occaecati voluptatibus praesentium aut aliquid nemo enim. Rem blanditiis dolore veniam cupiditate quia. Ut rerum saepe voluptas inventore accusantium. Nihil aliquam fuga quia."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:13:29.566817"], ["updated_at", "2015-04-09 00:13:29.566817"]]
+  [1m[35m (149.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Aut doloremque cupiditate rem laborum facere."], ["body", "Quia similique et pariatur. Ipsa reiciendis vel excepturi vel. Eveniet quia ut et consequatur illum dolore velit. Mollitia totam magni delectus qui laboriosam a ad. A sequi non esse rerum."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:13:29.722521"], ["updated_at", "2015-04-09 00:13:29.722521"]]
+  [1m[36m (160.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Iusto fugiat facilis quia quis molestias."], ["body", "Necessitatibus vel corporis est. Beatae eum eos placeat repellat ipsa et vel. Nihil adipisci sunt sequi. Sint sit fugiat."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:13:29.889380"], ["updated_at", "2015-04-09 00:13:29.889380"]]
+  [1m[35m (149.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Quasi voluptatem est sed doloribus."], ["body", "Sunt accusamus explicabo blanditiis. Odio et rerum velit optio vel. Ad atque odit nostrum sunt id. Dignissimos pariatur atque cupiditate quam eos consequatur et."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:13:30.045892"], ["updated_at", "2015-04-09 00:13:30.045892"]]
+  [1m[36m (149.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Dolorum laborum libero velit rem dolores voluptatibus."], ["body", "Delectus qui praesentium. Assumenda tempore nemo molestiae id sit dolores. Aut et deleniti illum officia quasi iure id."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:13:30.201477"], ["updated_at", "2015-04-09 00:13:30.201477"]]
+  [1m[35m (149.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Tempore voluptate modi ab."], ["body", "Sit ipsum ullam. Sit aliquid iure odit et autem facere. Iste aut illo. Nostrum sed perspiciatis est ipsam. Aut ducimus quia mollitia et excepturi."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:13:30.357627"], ["updated_at", "2015-04-09 00:13:30.357627"]]
+  [1m[36m (150.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Accusantium nemo iusto et."], ["body", "Ab aut corporis laboriosam quia dolores at culpa. Id ducimus explicabo quibusdam. Temporibus voluptatem nihil reiciendis dolores similique sapiente ipsum."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:13:30.514372"], ["updated_at", "2015-04-09 00:13:30.514372"]]
+  [1m[35m (149.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Tenetur voluptatem blanditiis aliquam cupiditate quos enim molestiae est."], ["body", "Tempora ea nulla et sunt. Aliquid dolore mollitia molestiae ea dolorem iste error. Voluptatem ipsum sint est magni quia perferendis praesentium."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:13:30.669624"], ["updated_at", "2015-04-09 00:13:30.669624"]]
+  [1m[36m (206.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Eum qui excepturi nam omnis."], ["body", "Qui at in unde. Dolorem amet ducimus recusandae facere non. Ut corporis dolor blanditiis voluptas fugiat. Provident fugit id sunt repellendus illo laboriosam quia. Quia error unde est et autem voluptas itaque."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:13:30.882099"], ["updated_at", "2015-04-09 00:13:30.882099"]]
+  [1m[35m (149.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Sint et nam tempore eum."], ["body", "Consectetur et magni sint. A enim soluta. Ducimus ratione nisi est optio dicta natus dolores."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:13:31.038350"], ["updated_at", "2015-04-09 00:13:31.038350"]]
+  [1m[36m (151.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Autem in nam sequi minus."], ["body", "Omnis ipsa corporis. Quidem voluptatem aut id quia similique. Tenetur sint laudantium. Earum hic similique laboriosam consequatur aspernatur distinctio magni. Aut tenetur sit quibusdam."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:13:31.196286"], ["updated_at", "2015-04-09 00:13:31.196286"]]
+  [1m[35m (138.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Dolor dolore nam ea sit animi atque amet consectetur."], ["body", "Molestiae praesentium quis. Aut esse amet et eligendi. Architecto a eaque voluptatum voluptas voluptatem laboriosam. Earum doloremque nihil. Et sint voluptas."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:13:31.341004"], ["updated_at", "2015-04-09 00:13:31.341004"]]
+  [1m[36m (149.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Quo nihil quia non dolore autem velit voluptates quasi."], ["body", "Sed sapiente aliquid et quod adipisci est architecto. Minus est omnis aut atque. Reprehenderit neque vitae aliquid quibusdam doloremque. Qui unde cumque cupiditate voluptas quis non."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:13:31.497409"], ["updated_at", "2015-04-09 00:13:31.497409"]]
+  [1m[35m (149.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Sunt voluptatem aperiam voluptas."], ["body", "Fugit placeat omnis quos omnis ut autem. Accusamus rerum eos vel eveniet adipisci. Nihil ad nesciunt ut ex sit ut in. Harum ut nihil. Fuga culpa nulla consequuntur aut quidem."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:13:31.652793"], ["updated_at", "2015-04-09 00:13:31.652793"]]
+  [1m[36m (149.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Dolore minus consectetur deserunt excepturi libero totam."], ["body", "Natus repellat dolores molestiae voluptatem eos. Dolorem hic et laboriosam ex. Enim quaerat eligendi. Itaque ratione aut."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:13:31.809044"], ["updated_at", "2015-04-09 00:13:31.809044"]]
+  [1m[35m (149.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Consequatur dolorem et quas dicta neque in temporibus."], ["body", "Ut aut quo incidunt. Necessitatibus et numquam voluptas alias. Est placeat quas iusto rem. Error et repudiandae voluptatibus. Dolore quaerat dolor saepe in et doloribus."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:13:31.965562"], ["updated_at", "2015-04-09 00:13:31.965562"]]
+  [1m[36m (149.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Repellat ipsa aperiam aut iusto."], ["body", "Deleniti quos fugit omnis explicabo. Vel error voluptate voluptatem necessitatibus non quas tempora. Sed id earum perferendis."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:13:32.121133"], ["updated_at", "2015-04-09 00:13:32.121133"]]
+  [1m[35m (149.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Et ut iste totam nulla."], ["body", "Deserunt sequi voluptates vero praesentium non corrupti. Consequatur rem tempora facilis earum. Autem veniam praesentium corrupti delectus."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:13:32.277001"], ["updated_at", "2015-04-09 00:13:32.277001"]]
+  [1m[36m (139.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Fuga ducimus consequuntur qui et."], ["body", "Aut ipsam et architecto atque perspiciatis. Tempore nostrum molestiae. Labore sed tenetur quia in a est expedita. Minus sint dignissimos voluptatem neque sed eius. Aut consequatur eos."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:13:32.422337"], ["updated_at", "2015-04-09 00:13:32.422337"]]
+  [1m[35m (150.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Eveniet rerum architecto sunt fuga quibusdam autem."], ["body", "Id illo soluta. Saepe dolorum perspiciatis adipisci qui. Aperiam quaerat perspiciatis dicta. Iusto animi qui. Quibusdam itaque repellat."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:13:32.578220"], ["updated_at", "2015-04-09 00:13:32.578220"]]
+  [1m[36m (150.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Eos omnis aspernatur voluptatem aut veritatis inventore."], ["body", "Tempore repellendus assumenda doloribus et dignissimos. Perferendis iusto dolores vel suscipit quod iste est. Itaque cupiditate adipisci consequatur ex sunt."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:13:32.733782"], ["updated_at", "2015-04-09 00:13:32.733782"]]
+  [1m[35m (150.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (144.6ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.3ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.6ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.4ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (139.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (132.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (133.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (146.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36m (141.0ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.1ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.2ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.3ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (154.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (132.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (134.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$YRk0VfsRiPbq/oymvsgMBuFkPoPTyfToBC4Ikq86KnQC/MKz8Mk6m"], ["created_at", "2015-04-09 00:14:15.456174"], ["updated_at", "2015-04-09 00:14:15.456174"]]
+  [1m[36m (134.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Vel qui harum laboriosam nihil."], ["body", "Non perspiciatis debitis magni voluptatem qui. Ut perspiciatis ea iusto consequatur. Nobis et qui omnis. Sit at laboriosam libero quasi."], ["user_id", 1], ["created_at", "2015-04-09 00:14:17.319873"], ["updated_at", "2015-04-09 00:14:17.319873"]]
+  [1m[35m (135.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Itaque quia alias omnis minima."], ["body", "Id aperiam dignissimos ut optio esse ab. Minus iure unde sunt quasi ullam. Hic magni natus quaerat quae vel veritatis ratione. Occaecati labore illo dignissimos eos."], ["user_id", 1], ["created_at", "2015-04-09 00:14:17.460582"], ["updated_at", "2015-04-09 00:14:17.460582"]]
+  [1m[36m (129.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ea in et et."], ["body", "Sequi sit aut. Sunt laboriosam ratione. Id non et recusandae aperiam. Libero nam iste."], ["user_id", 1], ["created_at", "2015-04-09 00:14:17.595784"], ["updated_at", "2015-04-09 00:14:17.595784"]]
+  [1m[35m (139.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Accusantium earum explicabo quos iure reiciendis et non sunt."], ["body", "Officiis velit eos commodi. Quas exercitationem recusandae. Natus corporis in omnis eius veritatis quaerat eaque. Quaerat consequatur sunt vitae quisquam impedit eos possimus. Architecto non tempore aut repellat."], ["user_id", 1], ["created_at", "2015-04-09 00:14:17.740426"], ["updated_at", "2015-04-09 00:14:17.740426"]]
+  [1m[36m (139.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Totam qui facere qui nulla."], ["body", "Dolores sit enim velit neque perferendis fuga qui. Tenetur necessitatibus autem optio. Reiciendis distinctio voluptate sint ut nihil illum temporibus. Ratione et labore qui quam consequatur."], ["user_id", 1], ["created_at", "2015-04-09 00:14:17.884887"], ["updated_at", "2015-04-09 00:14:17.884887"]]
+  [1m[35m (140.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Sint error nisi voluptatem."], ["body", "Est maxime laborum velit placeat. Qui explicabo eveniet minima architecto. Quia aut labore blanditiis cumque eum id provident. Delectus quia earum similique ut et veritatis beatae. Expedita amet ea sunt repellat impedit."], ["user_id", 1], ["created_at", "2015-04-09 00:14:18.030475"], ["updated_at", "2015-04-09 00:14:18.030475"]]
+  [1m[36m (139.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Deserunt temporibus harum delectus est voluptates."], ["body", "Maxime dolores perferendis voluptas sit. Et modi laboriosam natus odio. Quas sequi et."], ["user_id", 1], ["created_at", "2015-04-09 00:14:18.175439"], ["updated_at", "2015-04-09 00:14:18.175439"]]
+  [1m[35m (139.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Qui necessitatibus et minima a illum."], ["body", "Ad optio aliquam quasi sed et. Iure qui voluptas corrupti aliquam aut recusandae doloribus. Cumque nihil itaque distinctio voluptas quis. Dolore eligendi perspiciatis ipsa cumque dolor vero. Sunt ut voluptas tempora."], ["user_id", 1], ["created_at", "2015-04-09 00:14:18.320493"], ["updated_at", "2015-04-09 00:14:18.320493"]]
+  [1m[36m (139.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ullam amet ut aliquid enim sit eum sint."], ["body", "Et aut debitis. Sequi tempora doloribus eius est omnis in sit. Voluptatibus totam amet sed suscipit nostrum. Odio ad exercitationem ea sed."], ["user_id", 1], ["created_at", "2015-04-09 00:14:18.464895"], ["updated_at", "2015-04-09 00:14:18.464895"]]
+  [1m[35m (139.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Unde eos eum ab qui eos ea ut a."], ["body", "Aut maxime libero hic delectus quas possimus aut. Expedita porro hic. Recusandae facere expedita id modi consectetur non. Omnis hic nobis nisi."], ["user_id", 1], ["created_at", "2015-04-09 00:14:18.610670"], ["updated_at", "2015-04-09 00:14:18.610670"]]
+  [1m[36m (138.9ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Velit iure qui velit."], ["body", "Architecto et commodi quam repellat assumenda. Illo voluptatem quis asperiores nihil error et soluta. Dolor illum id modi ullam provident."], ["user_id", 1], ["created_at", "2015-04-09 00:14:32.579370"], ["updated_at", "2015-04-09 00:14:32.579370"]]
+  [1m[35m (131.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Doloremque ipsa quis commodi quisquam amet et aut."], ["body", "Necessitatibus et voluptatem sunt minus quia nemo ex. Aspernatur nihil ipsam consectetur omnis aliquam et. Molestiae fugit esse consectetur vel hic a dicta. Ab sed officia illo optio voluptas molestiae. Praesentium ea laboriosam nobis vel ut."], ["user_id", 1], ["created_at", "2015-04-09 00:14:32.715846"], ["updated_at", "2015-04-09 00:14:32.715846"]]
+  [1m[36m (138.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Et reprehenderit omnis corporis hic ut enim quo sunt."], ["body", "Id qui dolores ut est. Et cumque voluptatum itaque amet esse. Aperiam animi voluptatem sed qui omnis enim consequatur. Voluptatem doloribus voluptatem recusandae consequuntur."], ["user_id", 1], ["created_at", "2015-04-09 00:14:32.860048"], ["updated_at", "2015-04-09 00:14:32.860048"]]
+  [1m[35m (139.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Aliquam aut ex doloremque distinctio cum."], ["body", "At et ut quibusdam sunt. Numquam nihil voluptatem esse harum commodi debitis. Dolores ut animi consequatur aut. Rem eos dignissimos voluptatem. Est quidem sunt qui."], ["user_id", 1], ["created_at", "2015-04-09 00:14:33.004898"], ["updated_at", "2015-04-09 00:14:33.004898"]]
+  [1m[36m (152.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Quos natus cumque nisi."], ["body", "Itaque corporis doloremque. In velit et. Dolor quia quia. Incidunt voluptas voluptates. Rerum quia officiis vel."], ["user_id", 1], ["created_at", "2015-04-09 00:14:33.163280"], ["updated_at", "2015-04-09 00:14:33.163280"]]
+  [1m[35m (161.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Et repudiandae accusamus ut distinctio est."], ["body", "Veniam consequuntur quibusdam. Tempora cumque rerum. Omnis error similique quia ut laboriosam. Soluta sit tempore odit sit tenetur aut veritatis."], ["user_id", 1], ["created_at", "2015-04-09 00:14:33.330233"], ["updated_at", "2015-04-09 00:14:33.330233"]]
+  [1m[36m (139.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Maxime autem ut quidem illum voluptatum ab."], ["body", "Ab laborum enim a et et laboriosam. Iusto aut perspiciatis. Excepturi est molestiae architecto itaque."], ["user_id", 1], ["created_at", "2015-04-09 00:14:33.475026"], ["updated_at", "2015-04-09 00:14:33.475026"]]
+  [1m[35m (139.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Aliquid eveniet ea deleniti sequi dolorem."], ["body", "Nulla impedit sint nisi occaecati in. Dicta non sed eligendi. Doloremque quia ut ratione qui sit. Rem quia quia dolores ut. Veritatis nihil dolores est."], ["user_id", 1], ["created_at", "2015-04-09 00:14:33.624913"], ["updated_at", "2015-04-09 00:14:33.624913"]]
+  [1m[36m (134.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Excepturi et rerum non sunt."], ["body", "Sequi amet qui dolorum sint. Officia necessitatibus neque et libero voluptate assumenda. Et dolor magnam porro sed molestiae. Sit est maxime quia error nulla sed. Velit et et commodi ut."], ["user_id", 1], ["created_at", "2015-04-09 00:14:33.765351"], ["updated_at", "2015-04-09 00:14:33.765351"]]
+  [1m[35m (138.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quia qui enim nobis reprehenderit ad non."], ["body", "Voluptatem eos dolorem saepe est cumque perspiciatis sed. Nostrum amet perferendis libero neque deleniti. Qui quo vero mollitia voluptatibus."], ["question_id", 1], ["created_at", "2015-04-09 00:15:10.496464"], ["updated_at", "2015-04-09 00:15:10.496464"]]
+  [1m[36m (155.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "At aliquid vero et tenetur atque quis."], ["body", "Et autem veniam ratione. Eos sunt vitae sit qui nobis. Provident molestias laudantium modi. Libero hic dolor reiciendis doloribus fugiat."], ["question_id", 1], ["created_at", "2015-04-09 00:15:10.660924"], ["updated_at", "2015-04-09 00:15:10.660924"]]
+  [1m[36m (135.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Vitae et voluptas qui esse."], ["body", "Sed sequi expedita. Cum mollitia ex dicta. Dolorum fugiat sit aut rem autem. Exercitationem aperiam nemo. Fuga debitis iure aut."], ["question_id", 1], ["created_at", "2015-04-09 00:15:10.805306"], ["updated_at", "2015-04-09 00:15:10.805306"]]
+  [1m[36m (437.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Totam occaecati consequuntur reprehenderit praesentium exercitationem et error."], ["body", "Illo quos ipsum. Deserunt exercitationem est at. Magnam eveniet corporis perferendis libero est. Laborum suscipit officiis aut nostrum mollitia reiciendis rerum. Ab reprehenderit tempora pariatur nihil ut."], ["question_id", 2], ["created_at", "2015-04-09 00:15:11.253033"], ["updated_at", "2015-04-09 00:15:11.253033"]]
+  [1m[36m (145.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Saepe occaecati et ut cumque."], ["body", "Ut sed quia voluptatem. Repellendus eligendi aut quia et. Et odit eius voluptatem cumque id. Adipisci rerum ad nesciunt sit vero."], ["question_id", 2], ["created_at", "2015-04-09 00:15:11.408452"], ["updated_at", "2015-04-09 00:15:11.408452"]]
+  [1m[36m (157.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Qui laudantium autem rerum quae quia."], ["body", "Voluptas repellat molestias quaerat dolorem sed. Qui unde maiores ut enim consequuntur at. Dolores temporibus aliquam qui maxime."], ["question_id", 2], ["created_at", "2015-04-09 00:15:11.574933"], ["updated_at", "2015-04-09 00:15:11.574933"]]
+  [1m[36m (146.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Eius accusamus suscipit fuga laborum quis dolores eveniet."], ["body", "Praesentium reprehenderit neque eaque quis. Omnis velit labore consequuntur illo officiis. Necessitatibus minima iure cum natus quasi. Aut nobis exercitationem explicabo praesentium maiores totam et. Expedita praesentium iste."], ["question_id", 3], ["created_at", "2015-04-09 00:15:11.731385"], ["updated_at", "2015-04-09 00:15:11.731385"]]
+  [1m[36m (146.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Esse id voluptatibus et."], ["body", "Minima nostrum in. Adipisci quia voluptatem rerum possimus blanditiis. Repudiandae ipsum sunt culpa deserunt officiis dignissimos iure."], ["question_id", 3], ["created_at", "2015-04-09 00:15:11.887067"], ["updated_at", "2015-04-09 00:15:11.887067"]]
+  [1m[36m (158.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Earum distinctio quia alias tenetur delectus vel esse."], ["body", "Ut sapiente veritatis quia illo laborum voluptatem occaecati. Ea sed illo exercitationem velit necessitatibus mollitia voluptate. Dolore iusto id sunt aut ut et et. Sit aut sapiente."], ["question_id", 3], ["created_at", "2015-04-09 00:15:12.054838"], ["updated_at", "2015-04-09 00:15:12.054838"]]
+  [1m[36m (169.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Mollitia expedita rerum commodi dolores atque."], ["body", "Recusandae nesciunt in doloribus. Deserunt ut nam explicabo rerum perferendis voluptate sit. Magni numquam mollitia accusantium cum possimus. Reprehenderit quaerat rerum aut vero."], ["question_id", 4], ["created_at", "2015-04-09 00:15:12.233243"], ["updated_at", "2015-04-09 00:15:12.233243"]]
+  [1m[36m (157.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quasi eum voluptatem aut sed qui facere."], ["body", "Amet voluptatem dignissimos laudantium vero. Voluptatem ipsam minima. Voluptatibus rerum temporibus enim ab accusamus aut ducimus."], ["question_id", 4], ["created_at", "2015-04-09 00:15:12.400303"], ["updated_at", "2015-04-09 00:15:12.400303"]]
+  [1m[36m (159.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Magnam enim atque explicabo."], ["body", "Repellat quis porro. A deserunt ullam et. Quisquam porro veritatis amet non officiis sapiente. Blanditiis eligendi est in sunt totam."], ["question_id", 4], ["created_at", "2015-04-09 00:15:12.569143"], ["updated_at", "2015-04-09 00:15:12.569143"]]
+  [1m[36m (169.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Laborum quasi vel voluptatem exercitationem ratione consectetur."], ["body", "Omnis sint esse molestiae est vel asperiores officia. Quia velit perferendis sequi nostrum reiciendis distinctio. Nesciunt sint reiciendis est dolorem id. Et eaque voluptas."], ["question_id", 5], ["created_at", "2015-04-09 00:15:12.747768"], ["updated_at", "2015-04-09 00:15:12.747768"]]
+  [1m[36m (166.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Voluptatum laudantium et voluptas eaque cumque repellendus."], ["body", "Et vel facere explicabo voluptas qui. Perferendis quos vel dolorum est consectetur vitae est. Saepe mollitia asperiores quisquam voluptatem quo est. Adipisci quibusdam molestiae quo doloremque sed. Et id delectus culpa sint explicabo magnam."], ["question_id", 5], ["created_at", "2015-04-09 00:15:12.923985"], ["updated_at", "2015-04-09 00:15:12.923985"]]
+  [1m[36m (157.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Autem nihil molestiae iure laborum."], ["body", "Fugit ut minus et ut illum dolorem delectus. Ad est necessitatibus enim aut. Sapiente alias quas commodi facilis fuga quasi. Iusto ducimus odio in voluptatibus et. Magni et omnis numquam distinctio rem et qui."], ["question_id", 5], ["created_at", "2015-04-09 00:15:13.091201"], ["updated_at", "2015-04-09 00:15:13.091201"]]
+  [1m[36m (157.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Reiciendis et consequatur nisi."], ["body", "Temporibus similique quo placeat sunt natus. Omnis molestiae deserunt quibusdam dolores nemo blanditiis eligendi. Aut repudiandae voluptas dolor iste adipisci voluptate. Corporis id minus dolorem expedita recusandae."], ["question_id", 6], ["created_at", "2015-04-09 00:15:13.258552"], ["updated_at", "2015-04-09 00:15:13.258552"]]
+  [1m[36m (147.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Sequi dolor alias aspernatur cum non."], ["body", "Reprehenderit id libero. Quisquam dignissimos autem. Aliquid dolorum blanditiis debitis ut dignissimos."], ["question_id", 6], ["created_at", "2015-04-09 00:15:13.415200"], ["updated_at", "2015-04-09 00:15:13.415200"]]
+  [1m[36m (157.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Ut eos dolores nam quae qui velit voluptas quod."], ["body", "Porro consequatur aspernatur nobis quidem assumenda. Qui assumenda impedit voluptatibus odio. Aut aut molestiae qui rerum sint sapiente. Eum accusamus quidem eveniet modi amet."], ["question_id", 6], ["created_at", "2015-04-09 00:15:13.581248"], ["updated_at", "2015-04-09 00:15:13.581248"]]
+  [1m[36m (169.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Harum sunt dolores cumque quos molestiae magnam vel vitae."], ["body", "Voluptate dicta esse. Aliquam rerum omnis repudiandae nostrum. Eligendi beatae et. Officia cumque est aspernatur non eaque fugit."], ["question_id", 7], ["created_at", "2015-04-09 00:15:13.759901"], ["updated_at", "2015-04-09 00:15:13.759901"]]
+  [1m[36m (157.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Vel temporibus fuga qui."], ["body", "Rerum neque laborum. Cumque voluptatum harum quaerat dolorem. Vero porro cumque dolor deserunt enim neque."], ["question_id", 7], ["created_at", "2015-04-09 00:15:13.926589"], ["updated_at", "2015-04-09 00:15:13.926589"]]
+  [1m[36m (157.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quod velit rerum aut deleniti."], ["body", "Est cupiditate cum qui esse. Quibusdam vel voluptatem provident rem consectetur. Tenetur illum et dicta dolor ipsam ea."], ["question_id", 7], ["created_at", "2015-04-09 00:15:14.093723"], ["updated_at", "2015-04-09 00:15:14.093723"]]
+  [1m[36m (182.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Voluptas suscipit voluptates ipsam in facere earum error."], ["body", "Velit aut enim voluptas. Quibusdam minus et expedita et. Deserunt minus optio esse. Ex cumque nulla nostrum rerum. Reprehenderit consequatur id saepe laborum."], ["question_id", 8], ["created_at", "2015-04-09 00:15:14.285353"], ["updated_at", "2015-04-09 00:15:14.285353"]]
+  [1m[36m (157.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Est perferendis quis quibusdam aliquam."], ["body", "Illum sed cum et exercitationem. Accusantium vitae laboriosam iure eum laudantium. Blanditiis incidunt nesciunt commodi optio tenetur numquam. Perferendis maxime rem natus quo aspernatur quis."], ["question_id", 8], ["created_at", "2015-04-09 00:15:14.451945"], ["updated_at", "2015-04-09 00:15:14.451945"]]
+  [1m[36m (159.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Hic accusantium necessitatibus excepturi."], ["body", "Et quos accusamus nisi nihil et nobis quia. Animi dolorum autem esse. Enim sit nemo voluptates nulla. Voluptatem perferendis eum."], ["question_id", 8], ["created_at", "2015-04-09 00:15:14.620674"], ["updated_at", "2015-04-09 00:15:14.620674"]]
+  [1m[36m (169.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Placeat possimus libero illo quod et consequuntur."], ["body", "Vero autem quas sed asperiores. Et tempora illo id voluptates quam deleniti. Ut quia veritatis dolor occaecati praesentium."], ["question_id", 9], ["created_at", "2015-04-09 00:15:14.796734"], ["updated_at", "2015-04-09 00:15:14.796734"]]
+  [1m[36m (170.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Omnis qui earum nam eveniet."], ["body", "Suscipit sunt soluta doloremque perferendis in magni officiis. Officia tenetur dolorem sapiente distinctio ex similique sit. Sed iste corporis sit qui sequi eum debitis. Voluptate voluptatem et quo."], ["question_id", 9], ["created_at", "2015-04-09 00:15:14.976570"], ["updated_at", "2015-04-09 00:15:14.976570"]]
+  [1m[36m (169.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Dolorem sequi quisquam sapiente."], ["body", "Ipsum dolorem itaque. Aut aut voluptatem inventore. Ullam enim nobis exercitationem aliquid laudantium id."], ["question_id", 9], ["created_at", "2015-04-09 00:15:15.154678"], ["updated_at", "2015-04-09 00:15:15.154678"]]
+  [1m[36m (179.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Delectus sint numquam possimus dolor quam placeat et."], ["body", "Laudantium aperiam possimus aut eos. Et nulla voluptatibus nesciunt enim et cumque natus. Delectus corporis sit quis facere aspernatur."], ["question_id", 10], ["created_at", "2015-04-09 00:15:15.343771"], ["updated_at", "2015-04-09 00:15:15.343771"]]
+  [1m[36m (180.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Itaque similique facere eos."], ["body", "Sapiente dolores beatae eius. Est ab id reprehenderit tempore ipsa amet velit. Voluptas quia maiores architecto qui quam nihil exercitationem. Cumque voluptas corrupti laudantium quo repellendus. Ad dolore sunt dolorem."], ["question_id", 10], ["created_at", "2015-04-09 00:15:15.533447"], ["updated_at", "2015-04-09 00:15:15.533447"]]
+  [1m[36m (190.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quasi fuga beatae sed sed voluptatem ut."], ["body", "Ut consequatur consequatur eligendi praesentium adipisci. Sed consectetur consequatur praesentium similique ut. Et sint pariatur enim est enim libero tenetur. Exercitationem quidem tenetur non id temporibus fugiat."], ["question_id", 10], ["created_at", "2015-04-09 00:15:15.733780"], ["updated_at", "2015-04-09 00:15:15.733780"]]
+  [1m[36m (202.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Molestiae voluptatem quia ut ut."], ["body", "Id fugiat non a. Ratione odio accusamus sed quis voluptas illum. Quam eius quos eos ab quia in nihil."], ["question_id", 11], ["created_at", "2015-04-09 00:15:15.945367"], ["updated_at", "2015-04-09 00:15:15.945367"]]
+  [1m[36m (202.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Ratione distinctio esse quo ut temporibus sed."], ["body", "Soluta eum necessitatibus. Eligendi ipsam laudantium dolor. Nemo dolor labore nobis doloremque. Non recusandae quis asperiores quo omnis dolore. Quasi veritatis debitis velit nulla tempora sunt."], ["question_id", 11], ["created_at", "2015-04-09 00:15:16.156743"], ["updated_at", "2015-04-09 00:15:16.156743"]]
+  [1m[36m (179.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Dolores officiis hic qui totam assumenda omnis."], ["body", "Consectetur sit suscipit. Occaecati dolor rerum aut aut ut ipsum. Aspernatur et dicta. Sit ut voluptate iure neque modi ratione perspiciatis. In et quae."], ["question_id", 11], ["created_at", "2015-04-09 00:15:16.346116"], ["updated_at", "2015-04-09 00:15:16.346116"]]
+  [1m[36m (191.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Aut nobis neque error et velit voluptatum est dicta."], ["body", "Sit ipsa consequatur fuga. In eius sequi at. Sunt sit dolores voluptas enim reprehenderit beatae aperiam."], ["question_id", 12], ["created_at", "2015-04-09 00:15:16.546933"], ["updated_at", "2015-04-09 00:15:16.546933"]]
+  [1m[36m (179.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Unde dolorem perspiciatis numquam perferendis voluptatum."], ["body", "Consequatur similique voluptatem quam ex porro tempora. Iusto id accusantium deleniti nostrum. Et qui numquam sit voluptas nesciunt atque assumenda. Officiis eos id."], ["question_id", 12], ["created_at", "2015-04-09 00:15:16.735595"], ["updated_at", "2015-04-09 00:15:16.735595"]]
+  [1m[36m (158.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Autem rerum voluptate inventore sit similique animi maxime."], ["body", "Recusandae dolores et molestiae. Eos fugiat et non blanditiis veniam. Quia magni repellat quia."], ["question_id", 12], ["created_at", "2015-04-09 00:15:16.903755"], ["updated_at", "2015-04-09 00:15:16.903755"]]
+  [1m[36m (170.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Et rem et facere porro aut est minus."], ["body", "Perferendis consequatur quam. Similique eos corrupti. Sit placeat et rerum dolores consequatur optio. Cupiditate quia rem ea illo sunt. Occaecati ut nihil sed."], ["question_id", 13], ["created_at", "2015-04-09 00:15:17.084414"], ["updated_at", "2015-04-09 00:15:17.084414"]]
+  [1m[36m (179.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Voluptate culpa et earum omnis modi iusto aut."], ["body", "Sequi vel quibusdam qui qui dolorem eius quis. Tempore doloribus expedita unde fugit beatae optio nemo. Voluptates non mollitia at enim impedit et quae."], ["question_id", 13], ["created_at", "2015-04-09 00:15:17.273251"], ["updated_at", "2015-04-09 00:15:17.273251"]]
+  [1m[36m (168.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Debitis possimus ipsum ipsam quidem."], ["body", "Explicabo perspiciatis ex magni omnis quia fugiat distinctio. Quibusdam officia dolorum velit alias debitis magni. Dolorum atque quia tempore enim. Architecto qui iusto a."], ["question_id", 13], ["created_at", "2015-04-09 00:15:17.451108"], ["updated_at", "2015-04-09 00:15:17.451108"]]
+  [1m[36m (169.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Tenetur tempora in aut."], ["body", "Eos provident quia quas rerum et quasi earum. Voluptatem ducimus autem expedita. Molestiae nobis in fuga quam vel. Aut dolorem dolores voluptate impedit. Ipsum ab dolore."], ["question_id", 14], ["created_at", "2015-04-09 00:15:17.630237"], ["updated_at", "2015-04-09 00:15:17.630237"]]
+  [1m[36m (168.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quia quidem vel facere."], ["body", "Aut numquam possimus sed qui voluptas quibusdam praesentium. Rem ea ut. Repellat similique sunt."], ["question_id", 14], ["created_at", "2015-04-09 00:15:17.808015"], ["updated_at", "2015-04-09 00:15:17.808015"]]
+  [1m[36m (168.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Velit perferendis saepe iure voluptas aut vitae."], ["body", "Doloremque ut molestiae. Voluptates accusamus sit hic autem tempore. Illo fugiat et minus. Incidunt eveniet ipsum unde."], ["question_id", 14], ["created_at", "2015-04-09 00:15:17.986274"], ["updated_at", "2015-04-09 00:15:17.986274"]]
+  [1m[36m (168.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Natus libero molestiae dolor recusandae velit amet laudantium."], ["body", "Voluptatem ut aut sequi amet maxime sed. Veniam dignissimos praesentium officia quis et quaerat distinctio. Et atque in non et sit fuga doloremque. Omnis eos inventore ipsa culpa veniam debitis."], ["question_id", 15], ["created_at", "2015-04-09 00:15:18.164582"], ["updated_at", "2015-04-09 00:15:18.164582"]]
+  [1m[36m (168.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Dolore fugiat voluptatem commodi optio."], ["body", "Incidunt ut iure nam non placeat cum. Similique doloremque sit officiis aspernatur minima dicta. Voluptatibus dolorum fugiat autem voluptatem. Quia ad aspernatur quae possimus esse. Impedit quo velit magnam temporibus explicabo eveniet."], ["question_id", 15], ["created_at", "2015-04-09 00:15:18.342654"], ["updated_at", "2015-04-09 00:15:18.342654"]]
+  [1m[36m (201.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Architecto id et ratione voluptatum et dolorem iure."], ["body", "Ut dolorem deserunt nemo autem. Labore nobis impedit eum illo. Qui perspiciatis libero et. Quia molestias voluptas ea quia commodi quis non. Est blanditiis cupiditate natus sit quisquam."], ["question_id", 15], ["created_at", "2015-04-09 00:15:18.553956"], ["updated_at", "2015-04-09 00:15:18.553956"]]
+  [1m[36m (180.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Est nulla aspernatur tenetur vero quis nisi accusamus sint."], ["body", "Quam aut dolorem qui molestiae. Quidem dolores quis incidunt ipsa recusandae ut. Nesciunt ea aut odit rerum necessitatibus."], ["question_id", 16], ["created_at", "2015-04-09 00:15:18.743958"], ["updated_at", "2015-04-09 00:15:18.743958"]]
+  [1m[36m (168.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Dolor aut fugiat eveniet repellendus omnis voluptas."], ["body", "Fugiat ut animi sint debitis unde odio. Hic similique explicabo. Voluptatem autem quia."], ["question_id", 16], ["created_at", "2015-04-09 00:15:18.921612"], ["updated_at", "2015-04-09 00:15:18.921612"]]
+  [1m[36m (168.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quia ut minus aut dolores."], ["body", "Incidunt iusto rem deleniti est. Quisquam velit autem et incidunt ducimus. Exercitationem fugiat illum omnis natus."], ["question_id", 16], ["created_at", "2015-04-09 00:15:19.099871"], ["updated_at", "2015-04-09 00:15:19.099871"]]
+  [1m[36m (168.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quia dolore est consequuntur."], ["body", "Quam possimus saepe fugiat eaque voluptatibus ipsam. Praesentium porro ut. Dolor neque magnam quia doloremque. Quos sapiente eos. Fuga aperiam provident rerum necessitatibus ut in voluptatum."], ["question_id", 17], ["created_at", "2015-04-09 00:15:19.278559"], ["updated_at", "2015-04-09 00:15:19.278559"]]
+  [1m[36m (168.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Assumenda vitae quo ad placeat sit voluptatem."], ["body", "Dolorem officia aut maiores explicabo asperiores est. Eius necessitatibus vitae eum sapiente quia odio aut. Minima nihil veniam voluptas quibusdam laudantium illo. Voluptates quasi in ut."], ["question_id", 17], ["created_at", "2015-04-09 00:15:19.456063"], ["updated_at", "2015-04-09 00:15:19.456063"]]
+  [1m[36m (180.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Omnis veniam voluptatem nesciunt repellat aut porro consequuntur."], ["body", "Vero ut velit suscipit. Animi provident et delectus nemo doloremque sunt. Ut culpa iusto nemo."], ["question_id", 17], ["created_at", "2015-04-09 00:15:19.645735"], ["updated_at", "2015-04-09 00:15:19.645735"]]
+  [1m[36m (193.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (50.7ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quasi necessitatibus at cumque."], ["body", "Voluptatum asperiores cupiditate. Reprehenderit soluta facere quo veniam suscipit molestiae. Voluptates ratione beatae."], ["question_id", 18], ["created_at", "2015-04-09 00:15:19.849206"], ["updated_at", "2015-04-09 00:15:19.849206"]]
+  [1m[36m (162.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Velit inventore ipsam dolorum occaecati quod dicta."], ["body", "Totam quod optio cupiditate minima. Enim natus rerum dolore. Ut amet in tempore. Qui voluptates non omnis voluptatem assumenda. Aperiam quis at et."], ["question_id", 18], ["created_at", "2015-04-09 00:15:20.070955"], ["updated_at", "2015-04-09 00:15:20.070955"]]
+  [1m[36m (169.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Natus et consectetur aut deserunt aut et."], ["body", "Perspiciatis enim repellat a eos corporis. Quis et explicabo. Dicta aut eveniet dolor eaque neque et dolorum."], ["question_id", 18], ["created_at", "2015-04-09 00:15:20.249359"], ["updated_at", "2015-04-09 00:15:20.249359"]]
+  [1m[36m (169.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Tenetur accusantium qui molestiae."], ["body", "Adipisci id neque laboriosam deleniti eaque nihil. Voluptas distinctio quos fugit voluptatibus exercitationem est. Temporibus odio qui sequi distinctio nemo et mollitia. Quia sapiente sit sint facere a. Ea ex sunt sed architecto non iure."], ["question_id", 19], ["created_at", "2015-04-09 00:15:20.427547"], ["updated_at", "2015-04-09 00:15:20.427547"]]
+  [1m[36m (168.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "In ea et ut."], ["body", "Dolores alias distinctio vitae ducimus ratione. Explicabo voluptas pariatur sit dolor sint et. Repudiandae odio non."], ["question_id", 19], ["created_at", "2015-04-09 00:15:20.605826"], ["updated_at", "2015-04-09 00:15:20.605826"]]
+  [1m[36m (168.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Placeat ipsa iusto provident qui."], ["body", "Ea ducimus et pariatur esse totam voluptatem reiciendis. Impedit non dolorum asperiores sit est tempore quaerat. Quo culpa aperiam et ut ut rerum repellat."], ["question_id", 19], ["created_at", "2015-04-09 00:15:20.783689"], ["updated_at", "2015-04-09 00:15:20.783689"]]
+  [1m[36m (180.1ms)[0m  [1mcommit transaction[0m
+  [1m[36m (158.0ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.0ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.6ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (121.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (122.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (121.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (132.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (122.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36m (121.8ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.4ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.5ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (143.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (161.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (138.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (122.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (122.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (122.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$y4NhVhEZEKsbZ2T566VdyOovDdu1W8dT8H4LnCzy1Xs/F6UGVRi/."], ["created_at", "2015-04-09 00:30:05.582377"], ["updated_at", "2015-04-09 00:30:05.582377"]]
+  [1m[36m (138.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (166.1ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (131.8ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.6ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.8ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (150.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (143.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (165.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (122.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (100.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36m (107.8ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (109.8ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (110.4ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (132.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (132.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (132.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (133.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (158.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (133.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$wJKk./EwvNl59W41yqp2BOP41s5eyuu9nM5kz./YZ0rvd8O4whRxe"], ["created_at", "2015-04-09 00:32:40.101905"], ["updated_at", "2015-04-09 00:32:40.101905"]]
+  [1m[36m (133.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Inventore doloribus voluptatem labore et non quo."], ["body", "Facere sed autem aut voluptatem ut hic dolore. Sed ea repudiandae est dolores corrupti facilis. Labore id laboriosam dolor. Omnis voluptatum ea ut est ut. Sed asperiores ea saepe qui beatae."], ["user_id", 1], ["created_at", "2015-04-09 00:32:41.955993"], ["updated_at", "2015-04-09 00:32:41.955993"]]
+  [1m[35m (132.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Modi qui voluptatum exercitationem est officiis."], ["body", "Totam deleniti facere repudiandae inventore voluptatem. Eveniet animi aut dolorem asperiores sed voluptatem doloribus. Vero rem consequuntur error ut quo necessitatibus. Suscipit id maxime natus culpa dolorum vel. Sed asperiores assumenda."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.093982"], ["updated_at", "2015-04-09 00:32:42.093982"]]
+  [1m[36m (105.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Provident sunt velit omnis non incidunt."], ["body", "Dolorem eos temporibus. Molestiae dolor dolor laborum aut sequi. Vitae ratione ut distinctio autem aut quo repellendus."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.204933"], ["updated_at", "2015-04-09 00:32:42.204933"]]
+  [1m[35m (128.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Molestiae vel vitae error quibusdam voluptatem occaecati repellat."], ["body", "Commodi consequuntur fugit repudiandae id atque vel. Est id molestiae non. Veniam mollitia ex optio facere."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.338862"], ["updated_at", "2015-04-09 00:32:42.338862"]]
+  [1m[36m (117.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Amet omnis aspernatur quasi et."], ["body", "Animi quia soluta eaque enim similique rerum. Molestiae sapiente aspernatur facere magnam eligendi rem omnis. Quo eum similique qui. Provident quia velit mollitia necessitatibus doloribus vero. Ex nam quia est soluta possimus in laborum."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.461792"], ["updated_at", "2015-04-09 00:32:42.461792"]]
+  [1m[35m (139.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Adipisci esse dignissimos numquam explicabo est rerum quia."], ["body", "Et velit nihil et consequatur asperiores consequatur. Non aliquid dolorem corporis. Id est fugit. Repudiandae rem voluptates asperiores et."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.606508"], ["updated_at", "2015-04-09 00:32:42.606508"]]
+  [1m[36m (139.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Quas corrupti aut quidem eum qui doloremque in sapiente."], ["body", "Veritatis natus dicta delectus consequatur. Ut numquam praesentium accusantium. Iure voluptas optio. Ut reiciendis occaecati quasi voluptates. Distinctio eos voluptatem neque vero sunt repudiandae aut."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.751650"], ["updated_at", "2015-04-09 00:32:42.751650"]]
+  [1m[35m (139.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Omnis inventore quaerat voluptatem incidunt."], ["body", "In iure perferendis commodi nihil assumenda cum. Voluptate tempora nulla voluptates sit neque consequatur. Quia beatae impedit sit repellat non. Aspernatur quidem ipsam recusandae ea reprehenderit dignissimos."], ["user_id", 1], ["created_at", "2015-04-09 00:32:42.896465"], ["updated_at", "2015-04-09 00:32:42.896465"]]
+  [1m[36m (139.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Fugit voluptatem laborum ipsam voluptates nobis voluptate labore numquam."], ["body", "Tempora ea labore consectetur magnam. Laborum ut distinctio officiis. Fugiat ab aliquam odio beatae."], ["user_id", 1], ["created_at", "2015-04-09 00:32:43.041381"], ["updated_at", "2015-04-09 00:32:43.041381"]]
+  [1m[35m (139.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Earum praesentium qui omnis provident ipsum placeat."], ["body", "Deleniti laboriosam qui quam vel pariatur voluptatem. Cum et est aliquid voluptatem soluta. Voluptatem sint non ut."], ["user_id", 1], ["created_at", "2015-04-09 00:32:43.186259"], ["updated_at", "2015-04-09 00:32:43.186259"]]
+  [1m[36m (139.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mQuestion Load (0.5ms)[0m  SELECT "questions".* FROM "questions"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Et eos sequi ut porro."], ["body", "Enim quia cumque voluptas ullam dicta. Ipsum qui id cumque voluptas totam. Dolorem mollitia unde laborum et. Illum ipsam architecto. Ea soluta velit voluptate iusto."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:32:43.357997"], ["updated_at", "2015-04-09 00:32:43.357997"]]
+  [1m[36m (134.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "At amet animi velit similique."], ["body", "Molestiae quia aut. Qui numquam expedita aut enim voluptatum et minus. Dolorum aliquid velit consequuntur blanditiis."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:32:43.499010"], ["updated_at", "2015-04-09 00:32:43.499010"]]
+  [1m[35m (130.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Placeat quam et quod quasi qui possimus."], ["body", "Aut aut ut. Ut quis suscipit architecto. Quod hic provident dolorem."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:32:43.635386"], ["updated_at", "2015-04-09 00:32:43.635386"]]
+  [1m[36m (127.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Iusto iure et accusamus qui."], ["body", "Ut fugiat rerum quis. Unde non voluptatem dignissimos. Fuga iure aliquam assumenda."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:32:43.769791"], ["updated_at", "2015-04-09 00:32:43.769791"]]
+  [1m[35m (104.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Qui ipsa corrupti fugit nisi quia sunt."], ["body", "Nulla eos dolorem laudantium tempora aut incidunt quidem. Magnam natus voluptatem et. Nostrum dignissimos qui saepe est. Sit in aliquam aut qui fugiat qui natus."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:32:43.880860"], ["updated_at", "2015-04-09 00:32:43.880860"]]
+  [1m[36m (116.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Nam quam odit ullam ipsum architecto quo reprehenderit excepturi."], ["body", "Itaque et laudantium quis molestiae soluta mollitia. Eos occaecati sequi sunt voluptatum quasi velit nobis. Blanditiis consequatur deserunt laudantium laborum. Fuga aut velit quisquam et adipisci officiis ut. Et omnis delectus accusantium totam."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:32:44.003977"], ["updated_at", "2015-04-09 00:32:44.003977"]]
+  [1m[35m (116.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Itaque rerum ea aliquam omnis quia dolorem."], ["body", "Sunt omnis magni odio exercitationem doloremque. Quos nostrum velit cupiditate voluptatum libero vel. Quidem provident id voluptate aut. Iusto dolor eveniet. Voluptas voluptatem eum fugiat neque quia odio."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:32:44.127126"], ["updated_at", "2015-04-09 00:32:44.127126"]]
+  [1m[36m (116.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Suscipit quia quia dolores sint est optio asperiores excepturi."], ["body", "Molestiae earum veniam. Dolorem sequi assumenda neque ut aut quo. Et et sint. Eos quos est."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:32:44.249191"], ["updated_at", "2015-04-09 00:32:44.249191"]]
+  [1m[35m (138.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Ut voluptas et quos eaque doloribus alias autem."], ["body", "Explicabo eum sit expedita est sequi. Nam et quas. Minima consequatur facilis dolor aliquam. Consequatur magnam delectus. Laborum ut quia nam quisquam dolores."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:32:44.442603"], ["updated_at", "2015-04-09 00:32:44.442603"]]
+  [1m[36m (135.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Voluptas dolor tempora qui."], ["body", "Distinctio autem ut unde. Praesentium eius quo ducimus repellendus et eveniet. Aut eveniet cumque aspernatur natus numquam excepturi est. Sit cupiditate dolorem itaque. Modi esse accusamus rem."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:32:44.584072"], ["updated_at", "2015-04-09 00:32:44.584072"]]
+  [1m[35m (138.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Eos ut molestiae voluptate nobis labore est sit asperiores."], ["body", "Sed quia neque qui. Ad eveniet odit asperiores possimus neque. Provident et odit atque itaque aut. Voluptatem ut provident ratione deleniti dolores voluptatum. Laboriosam qui provident hic."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:32:44.728571"], ["updated_at", "2015-04-09 00:32:44.728571"]]
+  [1m[36m (138.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Sed numquam non repellendus a nobis eaque."], ["body", "Est ab minus consequuntur optio. Est qui veniam quis. Ut velit voluptatem et animi."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:32:44.873292"], ["updated_at", "2015-04-09 00:32:44.873292"]]
+  [1m[35m (138.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Ut voluptatem vero aut et adipisci voluptas."], ["body", "Explicabo rerum temporibus facilis. Et distinctio debitis quia pariatur sequi sed. Ullam eos id excepturi."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:32:45.018733"], ["updated_at", "2015-04-09 00:32:45.018733"]]
+  [1m[36m (138.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Tempora quaerat in eius ipsum et ducimus est."], ["body", "Sit quis dolorem. Amet at blanditiis culpa vel nisi dolore eius. Explicabo perspiciatis itaque accusamus voluptas fugit ex."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:32:45.163279"], ["updated_at", "2015-04-09 00:32:45.163279"]]
+  [1m[35m (138.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Delectus repudiandae autem sunt maiores dicta et nisi pariatur."], ["body", "Consequatur sit voluptatem. Ex quia perspiciatis vel sed non quaerat. Aut consectetur quaerat voluptas dolorem. Error in ipsa et fugiat earum doloribus accusamus. Minima quae expedita dolorem architecto accusamus eos nesciunt."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:32:45.308326"], ["updated_at", "2015-04-09 00:32:45.308326"]]
+  [1m[36m (138.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Omnis repudiandae quod voluptatem atque aliquam non sed."], ["body", "Amet tempore et non vel quasi. Esse libero modi voluptates fuga quo et occaecati. Omnis eaque blanditiis sed commodi maxime mollitia et. Ut qui et eligendi atque voluptate."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:32:45.453721"], ["updated_at", "2015-04-09 00:32:45.453721"]]
+  [1m[35m (138.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Soluta aut omnis ex non."], ["body", "Quas et error aspernatur. Nihil earum qui quae et qui. Quo at quae. Porro perferendis quia officia ab. Sequi quia commodi non."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:32:45.598175"], ["updated_at", "2015-04-09 00:32:45.598175"]]
+  [1m[36m (138.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Maxime a ea earum."], ["body", "Ut aut nesciunt et adipisci ut. Cumque explicabo repellendus nesciunt ut inventore modi. Perferendis consectetur iusto aut id. Fugiat ad animi reprehenderit distinctio voluptatem."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:32:45.742980"], ["updated_at", "2015-04-09 00:32:45.742980"]]
+  [1m[35m (151.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Libero ut voluptatum in quidem vel temporibus et."], ["body", "Culpa quae eveniet dolorem cupiditate consequatur est. Libero possimus reiciendis aliquam. Reprehenderit et id perspiciatis in nobis rem. Ut quis molestias mollitia sunt rerum rem numquam."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:32:45.901519"], ["updated_at", "2015-04-09 00:32:45.901519"]]
+  [1m[36m (116.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Et quia officiis sunt deserunt ut."], ["body", "Expedita et at doloribus. Nisi porro repudiandae corrupti maiores nulla dolor. Et id quia pariatur et dolores."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:32:46.023592"], ["updated_at", "2015-04-09 00:32:46.023592"]]
+  [1m[35m (116.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Officiis ratione dolor iusto repellat alias numquam porro."], ["body", "Reprehenderit ut vel eligendi. Nisi et qui tempore. Aspernatur voluptatem enim sed debitis consequatur quis. Nobis porro possimus itaque in asperiores voluptas qui."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:32:46.146478"], ["updated_at", "2015-04-09 00:32:46.146478"]]
+  [1m[36m (127.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Et autem illum id qui."], ["body", "Quam ut necessitatibus dicta voluptas dolores rerum ut. Reprehenderit amet repellendus id. Suscipit alias at aut voluptates delectus voluptas."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:32:46.280737"], ["updated_at", "2015-04-09 00:32:46.280737"]]
+  [1m[35m (138.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alias corrupti id possimus vel."], ["body", "Et est facilis consequatur qui eaque. Sit amet delectus ut dolor. Suscipit ex aut. Similique sunt quasi nobis ea reprehenderit deserunt. Id quidem dolores."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:32:46.425044"], ["updated_at", "2015-04-09 00:32:46.425044"]]
+  [1m[36m (139.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Autem ab nihil hic non dolorem qui."], ["body", "Ducimus voluptate voluptatum dolores impedit. Quam expedita et sint et ipsum perferendis. Amet libero unde."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:32:46.570110"], ["updated_at", "2015-04-09 00:32:46.570110"]]
+  [1m[35m (138.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Totam ducimus autem odit vitae non soluta ut ex."], ["body", "Maiores sit quidem aut. Nobis odit quibusdam facilis placeat id repellat magnam. Ipsum pariatur quos voluptates velit. Ab fuga saepe qui accusantium voluptate cumque et."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:32:46.715400"], ["updated_at", "2015-04-09 00:32:46.715400"]]
+  [1m[36m (138.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Exercitationem non quos impedit rem quidem incidunt veritatis."], ["body", "Debitis sapiente assumenda nostrum occaecati fugiat. Itaque aspernatur ducimus ut accusamus. Libero atque reiciendis doloribus voluptatem. Porro rem quaerat voluptas. Exercitationem sunt in qui nulla."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:32:46.859990"], ["updated_at", "2015-04-09 00:32:46.859990"]]
+  [1m[35m (138.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Ipsa ad est accusantium aliquam dolor."], ["body", "Officiis at sunt qui molestiae. Accusantium ut quia. Et quibusdam atque ad fuga. Delectus repellat beatae sit facilis unde magni aut."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:32:47.004968"], ["updated_at", "2015-04-09 00:32:47.004968"]]
+  [1m[36m (138.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Ut excepturi officia est."], ["body", "Illo est id id nobis voluptatibus porro. Dolore delectus eligendi magnam iste. Similique quos minus nemo. Est voluptatibus et itaque."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:32:47.150313"], ["updated_at", "2015-04-09 00:32:47.150313"]]
+  [1m[35m (138.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Dicta quo et ea qui sequi."], ["body", "Consequuntur fuga est sed quas laudantium commodi. Et accusamus ipsa. Et rerum nulla quia harum unde corporis aliquam."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:32:47.294739"], ["updated_at", "2015-04-09 00:32:47.294739"]]
+  [1m[36m (138.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Commodi eligendi labore aliquid soluta cum omnis aut."], ["body", "Quia velit sequi veniam quasi dicta. Illo odio optio excepturi minus illum id rerum. Possimus quisquam aut vel."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:32:47.439626"], ["updated_at", "2015-04-09 00:32:47.439626"]]
+  [1m[35m (138.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (162.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (143.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateQuestions (20150408184913)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408184913"]]
+  [1m[35m (141.9ms)[0m  commit transaction
+Migrating to CreateAnswers (20150408190345)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408190345"]]
+  [1m[35m (140.0ms)[0m  commit transaction
+Migrating to CreateUsers (20150408190856)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408190856"]]
+  [1m[35m (139.1ms)[0m  commit transaction
+Migrating to CreateVotes (20150408191913)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408191913"]]
+  [1m[35m (138.6ms)[0m  commit transaction
+Migrating to CreateComments (20150408200332)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408200332"]]
+  [1m[35m (132.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$uDwx6nbuWeZWK8VAOE8a.ucSzTcVq5RNH5..AW7KUVmTeweCWhD0S"], ["created_at", "2015-04-09 00:33:57.173144"], ["updated_at", "2015-04-09 00:33:57.173144"]]
+  [1m[36m (142.1ms)[0m  [1mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36m (194.2ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (145.1ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.7ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (143.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (143.7ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (134.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (143.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (121.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (133.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36m (133.8ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (105.8ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (110.3ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (110.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (144.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (154.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (132.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (133.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408200332')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408184913')[0m
+  [1m[35m (133.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408190345')
+  [1m[36m (133.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150408190856')[0m
+  [1m[35m (133.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150408191913')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$wojOO0jTP51c2DPHmk0nPe4UT3xRF3.lFBJgTY15hYATCV80/Os7i"], ["created_at", "2015-04-09 00:34:37.195672"], ["updated_at", "2015-04-09 00:34:37.195672"]]
+  [1m[36m (134.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Facilis aspernatur qui praesentium."], ["body", "Cupiditate distinctio velit. Est porro atque recusandae autem ullam id. Sint ut sequi aut. Voluptas nemo qui et unde. Molestias et dolores totam illum adipisci."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.046162"], ["updated_at", "2015-04-09 00:34:39.046162"]]
+  [1m[35m (142.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Sed eligendi fuga et."], ["body", "Voluptatibus incidunt minus placeat. Similique voluptate reiciendis iure eum eum. Repellendus aperiam dolor omnis quia. Eligendi similique vel repudiandae. Culpa accusamus dicta sequi corporis pariatur excepturi."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.191327"], ["updated_at", "2015-04-09 00:34:39.191327"]]
+  [1m[36m (126.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ut est porro sequi qui et repellendus eos."], ["body", "Temporibus nisi distinctio et fuga consequuntur officiis. Itaque fugit sunt consequatur aliquid. Doloremque sunt animi in. Perferendis mollitia neque. Aut corporis voluptates ipsa beatae animi non vitae."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.320258"], ["updated_at", "2015-04-09 00:34:39.320258"]]
+  [1m[35m (120.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Corporis deleniti est suscipit quasi aut rem totam nobis."], ["body", "Quod non quidem voluptatem. Architecto explicabo corporis id enim. Quia qui dolor laboriosam. Fuga et dolore a sunt unde. Iste natus est."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.444259"], ["updated_at", "2015-04-09 00:34:39.444259"]]
+  [1m[36m (151.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Tempora id non repellat magnam."], ["body", "Nisi ab omnis molestiae. Magni est et adipisci. Earum itaque deserunt minus voluptas dolores. Excepturi molestias voluptatem dicta maiores et doloribus quia."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.600921"], ["updated_at", "2015-04-09 00:34:39.600921"]]
+  [1m[35m (128.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Quaerat quo enim aperiam libero sunt omnis vel velit."], ["body", "Ipsam voluptate voluptas consectetur praesentium officia incidunt. Ea optio quam repellendus hic ipsa sed dignissimos. Recusandae occaecati libero. Quae dignissimos molestiae dolorem. Odio ut enim molestias laborum."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.734753"], ["updated_at", "2015-04-09 00:34:39.734753"]]
+  [1m[36m (128.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Minima nisi eligendi at voluptates ducimus officiis."], ["body", "Dicta dolor quibusdam voluptatem itaque et nostrum id. Provident quae debitis qui et expedita placeat. Corrupti occaecati placeat itaque. Dolorum cum placeat vel. Temporibus molestiae architecto perspiciatis."], ["user_id", 1], ["created_at", "2015-04-09 00:34:39.868734"], ["updated_at", "2015-04-09 00:34:39.868734"]]
+  [1m[35m (150.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Et maxime sequi delectus eos rerum."], ["body", "Amet modi et quia nostrum qui. Tempora assumenda sint. Maxime voluptatibus illo quo."], ["user_id", 1], ["created_at", "2015-04-09 00:34:40.024593"], ["updated_at", "2015-04-09 00:34:40.024593"]]
+  [1m[36m (151.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Voluptas eligendi unde est."], ["body", "Vel praesentium ratione aut hic enim dolorum. Iusto alias facere nulla. Veniam et alias."], ["user_id", 1], ["created_at", "2015-04-09 00:34:40.181738"], ["updated_at", "2015-04-09 00:34:40.181738"]]
+  [1m[35m (150.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Voluptatibus itaque consequuntur et nihil illo optio sunt molestiae."], ["body", "Eaque recusandae nemo et molestiae odit deleniti dolore. Qui delectus neque quidem tempora. Velit et animi dolores repudiandae assumenda."], ["user_id", 1], ["created_at", "2015-04-09 00:34:40.337823"], ["updated_at", "2015-04-09 00:34:40.337823"]]
+  [1m[36m (150.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT "questions".* FROM "questions"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Ex doloribus modi sunt optio id enim."], ["body", "Ab velit consequatur incidunt. Et et tenetur iste saepe est labore. Iste aut aliquid esse. Repudiandae dolore animi et iure quo. Omnis autem ducimus architecto impedit."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:34:40.520860"], ["updated_at", "2015-04-09 00:34:40.520860"]]
+  [1m[36m (134.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Et aut explicabo quidem et voluptas expedita."], ["body", "Quaerat ab facilis aliquid. Eum quos dolorum non veritatis non aut error. Voluptas quam dolor molestias eveniet sunt itaque. Quo delectus consequuntur sunt deleniti atque eveniet."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:34:40.661361"], ["updated_at", "2015-04-09 00:34:40.661361"]]
+  [1m[35m (138.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Ipsam velit dolor aut maxime debitis nihil."], ["body", "Quis in cupiditate ratione perspiciatis. Nisi eos dolore optio aperiam voluptate ut officia. Sit et in natus minima voluptatem voluptas."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:34:40.806287"], ["updated_at", "2015-04-09 00:34:40.806287"]]
+  [1m[36m (138.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Aut dolor voluptas dolorum tempora officia expedita quo."], ["body", "Suscipit asperiores nihil dolorum in ut. Et cupiditate est velit cum facilis ratione. Ullam amet dignissimos. Maxime eum sapiente minus et quaerat saepe nulla. Dolore nobis quas."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:34:40.951007"], ["updated_at", "2015-04-09 00:34:40.951007"]]
+  [1m[35m (150.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Sequi expedita in nobis et."], ["body", "Eveniet est vel error tenetur. Et delectus reprehenderit quam hic voluptate exercitationem. Cumque delectus sunt voluptas rerum."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:34:41.106180"], ["updated_at", "2015-04-09 00:34:41.106180"]]
+  [1m[36m (151.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Dolor ratione et nisi."], ["body", "Alias omnis eos dolore quis rerum. Velit nam qui quia. Praesentium in temporibus et. Ipsam quibusdam quia."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:34:41.263314"], ["updated_at", "2015-04-09 00:34:41.263314"]]
+  [1m[35m (149.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Consectetur perferendis error nisi ipsum est occaecati."], ["body", "Accusamus corporis quae minus ducimus inventore. Repellendus quod suscipit. Magnam est et recusandae nobis."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:34:41.419596"], ["updated_at", "2015-04-09 00:34:41.419596"]]
+  [1m[36m (149.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Aperiam eligendi nostrum eius quidem non culpa."], ["body", "Aut commodi corrupti placeat ut et. Quia iste reprehenderit suscipit et. Incidunt in dolor voluptatem libero quis. Autem sint numquam."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:34:41.575398"], ["updated_at", "2015-04-09 00:34:41.575398"]]
+  [1m[35m (112.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Illum voluptatem nihil deserunt aperiam eum."], ["body", "Totam corporis repellat sed sunt dignissimos. Sequi et aut. Consequatur ut at quia. In laboriosam accusamus dolorem provident voluptatem cum. Nam fugiat harum veritatis eveniet officiis exercitationem."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:34:41.743053"], ["updated_at", "2015-04-09 00:34:41.743053"]]
+  [1m[36m (116.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "In nesciunt quibusdam quisquam aut consectetur officia."], ["body", "Repellat eum et. Quasi suscipit nisi delectus et soluta officia id. Distinctio aut vitae odio impedit. Sed dolore quo et recusandae. Ex commodi facilis et tenetur explicabo."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:34:41.866151"], ["updated_at", "2015-04-09 00:34:41.866151"]]
+  [1m[35m (138.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Non esse amet distinctio saepe impedit nulla odio."], ["body", "Nostrum tempora blanditiis illum deserunt sed consequatur et. Id est et nisi. Velit assumenda dignissimos quia asperiores dolorem."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:34:42.010417"], ["updated_at", "2015-04-09 00:34:42.010417"]]
+  [1m[36m (138.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Nobis velit est alias id est a."], ["body", "Accusantium et ut voluptas dolorem est sed. Ducimus magni sunt. Dolor sit omnis."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:34:42.155082"], ["updated_at", "2015-04-09 00:34:42.155082"]]
+  [1m[35m (139.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Dolorem illum et dolore omnis labore perferendis."], ["body", "Veritatis ex deleniti. Voluptas occaecati omnis. Aut eum eum excepturi nemo incidunt."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:34:42.300754"], ["updated_at", "2015-04-09 00:34:42.300754"]]
+  [1m[36m (140.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Ducimus possimus earum aut atque."], ["body", "Temporibus dolor officiis voluptatem repellendus illum magni a. Voluptatem molestiae porro dolores. Consequatur dolores repudiandae qui et sit est. Consequuntur magni eum in expedita sit quaerat rerum. Odit quis minus voluptatibus enim."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:34:42.447144"], ["updated_at", "2015-04-09 00:34:42.447144"]]
+  [1m[35m (138.5ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Optio est nihil sit iste culpa quia rerum."], ["body", "Officiis reprehenderit eveniet corporis quia tenetur eligendi. Non possimus corrupti adipisci et aliquam ut iste. Eum et quo."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:34:42.592071"], ["updated_at", "2015-04-09 00:34:42.592071"]]
+  [1m[36m (160.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Et inventore et qui sunt dicta."], ["body", "Aliquam voluptatum optio neque. Ratione iure culpa tempore libero. Tenetur sit delectus vel. Aperiam dolor corporis consequatur est nihil."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:34:42.759447"], ["updated_at", "2015-04-09 00:34:42.759447"]]
+  [1m[35m (138.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Ut soluta eos laudantium iste temporibus minima voluptates."], ["body", "Voluptatum vel sequi atque quae. Quaerat et error. Error minus quos libero reprehenderit. Similique consequuntur quas qui. Sed quis esse."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:34:42.903906"], ["updated_at", "2015-04-09 00:34:42.903906"]]
+  [1m[36m (138.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+SQLite3::SQLException: no such table: users: SELECT "users".* FROM "users"
+  [1m[36m (132.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (132.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateQuestions (20150408184913)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408184913"]]
+  [1m[35m (144.2ms)[0m  commit transaction
+Migrating to CreateAnswers (20150408190345)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "question_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408190345"]]
+  [1m[35m (150.9ms)[0m  commit transaction
+Migrating to CreateUsers (20150408190856)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "location" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408190856"]]
+  [1m[35m (117.3ms)[0m  commit transaction
+Migrating to CreateVotes (20150408191913)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "votable_id" integer, "votable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408191913"]]
+  [1m[35m (94.9ms)[0m  commit transaction
+Migrating to CreateComments (20150408200332)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "commentable_id" integer, "commentable_type" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150408200332"]]
+  [1m[35m (100.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'aquinomas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "location", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "VanVan"], ["location", "Cuba"], ["username", "aquinomas"], ["password_digest", "$2a$10$D18OdbajDuvT76kg1lfpb.W66w.AWkSQa7rp5UBU//nFJ365ZQQ72"], ["created_at", "2015-04-09 00:37:53.729959"], ["updated_at", "2015-04-09 00:37:53.729959"]]
+  [1m[36m (158.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Est recusandae voluptatem."], ["body", "Quidem ullam architecto id libero. Eum ex placeat ut fugit. Id sed consectetur accusantium vitae a."], ["user_id", 1], ["created_at", "2015-04-09 00:37:55.386058"], ["updated_at", "2015-04-09 00:37:55.386058"]]
+  [1m[35m (200.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Maiores perspiciatis quis."], ["body", "Officiis in atque esse reprehenderit. Sunt adipisci laborum facilis accusantium quibusdam. Voluptatem dolorum facilis sint amet at nam voluptas."], ["user_id", 1], ["created_at", "2015-04-09 00:37:55.590527"], ["updated_at", "2015-04-09 00:37:55.590527"]]
+  [1m[36m (139.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Nihil est."], ["body", "Quas blanditiis magnam qui quidem. Mollitia sed hic eius cum praesentium repudiandae magni. Architecto tempore distinctio ipsum aut. Qui ab rerum."], ["user_id", 1], ["created_at", "2015-04-09 00:37:55.735250"], ["updated_at", "2015-04-09 00:37:55.735250"]]
+  [1m[35m (140.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Aliquam a eaque pariatur officiis."], ["body", "Cupiditate laborum consequatur. Natus reiciendis quia placeat mollitia laboriosam. Fugit voluptatum ipsum sed quia quos a et. Est voluptatem unde aliquam quos et natus."], ["user_id", 1], ["created_at", "2015-04-09 00:37:55.880776"], ["updated_at", "2015-04-09 00:37:55.880776"]]
+  [1m[36m (139.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Voluptas similique est soluta qui autem aut."], ["body", "Consequatur doloremque enim ea natus distinctio. Est consequatur non. Vero velit laboriosam nisi. Aspernatur earum consequatur tenetur nesciunt aliquam impedit hic."], ["user_id", 1], ["created_at", "2015-04-09 00:37:56.025782"], ["updated_at", "2015-04-09 00:37:56.025782"]]
+  [1m[35m (139.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Nemo est maiores dolore ab fugit recusandae."], ["body", "Perferendis quis culpa eos aut dolores. Dolores officiis ea deleniti cumque. Quas voluptatibus voluptates corporis impedit aut ab."], ["user_id", 1], ["created_at", "2015-04-09 00:37:56.170705"], ["updated_at", "2015-04-09 00:37:56.170705"]]
+  [1m[36m (139.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Rerum dolores."], ["body", "Possimus dolorem numquam officia dolor rem non molestiae. At aut maiores repudiandae delectus suscipit. Sed debitis voluptatem. Neque aut aut perferendis dolor qui eum. Voluptatem libero velit et cumque aliquid quia."], ["user_id", 1], ["created_at", "2015-04-09 00:37:56.315614"], ["updated_at", "2015-04-09 00:37:56.315614"]]
+  [1m[35m (139.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Doloribus est aut modi et."], ["body", "Consectetur sunt et aut quia qui esse laborum. Qui hic nisi earum consequatur omnis. Quia accusamus nisi perferendis sed. Et qui totam enim perferendis minus earum. Vel autem quasi numquam consectetur aut."], ["user_id", 1], ["created_at", "2015-04-09 00:37:56.460320"], ["updated_at", "2015-04-09 00:37:56.460320"]]
+  [1m[36m (141.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Aut aliquid."], ["body", "Molestiae eius consequuntur at est aliquam inventore ut. Excepturi et nesciunt id aspernatur aut. Quidem velit quis. Nisi quas cumque libero dicta qui qui."], ["user_id", 1], ["created_at", "2015-04-09 00:37:56.607329"], ["updated_at", "2015-04-09 00:37:56.607329"]]
+  [1m[35m (139.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Earum id magni."], ["body", "Pariatur delectus nam tempora consectetur ducimus fugiat. Voluptatem architecto iste aliquid consequatur occaecati cupiditate tenetur. Culpa qui voluptas maxime eos nihil sit. Et deleniti vel quis ut odit numquam quia. Officia ipsam autem minus et iusto."], ["user_id", 1], ["created_at", "2015-04-09 00:37:56.752226"], ["updated_at", "2015-04-09 00:37:56.752226"]]
+  [1m[36m (117.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT "questions".* FROM "questions"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Eos illo nisi et fugiat."], ["body", "Commodi quia voluptas consequatur est et est. Totam dignissimos sapiente harum. Ullam sunt aliquam quasi quos quibusdam. Saepe voluptatem quaerat repellendus. Qui ut dolor corrupti necessitatibus."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:37:56.945180"], ["updated_at", "2015-04-09 00:37:56.945180"]]
+  [1m[36m (124.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Debitis id alias tempora non."], ["body", "Distinctio quia velit sunt voluptas itaque. Quas distinctio illum autem ea. Sequi voluptatibus maiores vitae quo ea sunt. Laboriosam quos dolorem quo soluta beatae."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:37:57.076341"], ["updated_at", "2015-04-09 00:37:57.076341"]]
+  [1m[35m (116.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Corrupti consequatur et ea accusantium molestias voluptate."], ["body", "Accusamus quam dolorem voluptatem ut esse. Saepe architecto sed non. Dignissimos minima voluptas nihil ea."], ["user_id", 1], ["question_id", 1], ["created_at", "2015-04-09 00:37:57.198589"], ["updated_at", "2015-04-09 00:37:57.198589"]]
+  [1m[36m (116.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Qui et deserunt enim quisquam."], ["body", "Similique sint quis aut. Inventore ut et molestiae. Quos molestias temporibus occaecati quisquam beatae. In tempore omnis repudiandae dolor molestias est nulla. Repudiandae ea voluptatem et ipsum nobis."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:37:57.321903"], ["updated_at", "2015-04-09 00:37:57.321903"]]
+  [1m[35m (138.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Hic consequatur sed aut."], ["body", "Incidunt architecto et doloremque et et libero omnis. Dolorem atque molestiae. Sint eos ut sed accusantium. Dolores ipsa molestias voluptas. Beatae dolorem placeat aut eum animi ut."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:37:57.466409"], ["updated_at", "2015-04-09 00:37:57.466409"]]
+  [1m[36m (138.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Provident dicta."], ["body", "Architecto ut dolorem quo minus. Voluptates illum porro. Cum rerum id voluptas quia fuga ea molestiae. Eius aut ut."], ["user_id", 1], ["question_id", 2], ["created_at", "2015-04-09 00:37:57.611200"], ["updated_at", "2015-04-09 00:37:57.611200"]]
+  [1m[35m (161.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Vel harum ex illum et sed est."], ["body", "Ea rerum aut sit cum nam. Quod libero et. Animi culpa libero consequatur nobis quae. Facere voluptatem commodi sunt suscipit rerum. Consequatur voluptatum sit laboriosam illo eveniet eaque facilis."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:37:57.778993"], ["updated_at", "2015-04-09 00:37:57.778993"]]
+  [1m[36m (160.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Ut sit fugit tempore quam repudiandae."], ["body", "Labore minus enim sint aut eos in. Culpa autem dolorem velit asperiores. Vero repellendus sint quaerat. Officia laborum odit ut."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:37:57.945393"], ["updated_at", "2015-04-09 00:37:57.945393"]]
+  [1m[35m (150.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Magni doloribus consectetur ut ab mollitia aperiam."], ["body", "Alias impedit hic sit tenetur dolor veritatis. Omnis facere qui. Sint mollitia voluptas nesciunt quia esse quae. Placeat dolores voluptatem repellat doloribus ducimus omnis."], ["user_id", 1], ["question_id", 3], ["created_at", "2015-04-09 00:37:58.100695"], ["updated_at", "2015-04-09 00:37:58.100695"]]
+  [1m[36m (151.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Sapiente in rerum."], ["body", "Sed a dolorem. Fugiat magnam dolorum minima voluptatem animi in velit. Aliquam laborum libero mollitia. Ut explicabo fuga aperiam id. Mollitia qui sequi reprehenderit dolores nostrum."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:37:58.258215"], ["updated_at", "2015-04-09 00:37:58.258215"]]
+  [1m[35m (149.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Neque vel nesciunt atque."], ["body", "Et accusamus incidunt qui tempore omnis. Ut tempora asperiores soluta et possimus. Voluptates est unde officiis sit molestiae ut reiciendis. In dignissimos nobis reprehenderit."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:37:58.413795"], ["updated_at", "2015-04-09 00:37:58.413795"]]
+  [1m[36m (149.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Non odio quibusdam minus fugiat ut earum."], ["body", "Recusandae quas omnis dolore. Et vel necessitatibus rerum earum eligendi occaecati optio. Dolorum sit inventore aspernatur molestias minus. Saepe quasi delectus ipsa quas esse voluptatem ut. Beatae sequi culpa."], ["user_id", 1], ["question_id", 4], ["created_at", "2015-04-09 00:37:58.569688"], ["updated_at", "2015-04-09 00:37:58.569688"]]
+  [1m[35m (149.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Non nemo."], ["body", "Voluptatem et natus ullam dolorum eligendi. Nesciunt consequatur id officia atque dolorum aut unde. Sint perferendis cum dolores tenetur dolores cumque itaque. Explicabo quia voluptatibus iste. Beatae corrupti vitae a et in."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:37:58.726084"], ["updated_at", "2015-04-09 00:37:58.726084"]]
+  [1m[36m (149.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Repudiandae nulla laboriosam odio."], ["body", "Dolorem impedit reiciendis quia quia corporis esse dolores. Sequi quo corporis eveniet quos. Rerum et adipisci in. Aspernatur nisi fugiat repudiandae molestias distinctio enim. Sint voluptatum fugit aut hic."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:37:58.881900"], ["updated_at", "2015-04-09 00:37:58.881900"]]
+  [1m[35m (162.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Nobis consequuntur dolor sint animi minus."], ["body", "Nobis consequatur voluptas dolor pariatur ad omnis. Et ducimus quo error et doloremque enim deserunt. In repellat placeat similique dolorem autem. Nesciunt quo hic eaque."], ["user_id", 1], ["question_id", 5], ["created_at", "2015-04-09 00:37:59.050673"], ["updated_at", "2015-04-09 00:37:59.050673"]]
+  [1m[36m (150.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Officiis at."], ["body", "Dolore officiis aut temporibus. Unde numquam fuga facere aut velit et. Ipsa ea optio error autem."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:37:59.207038"], ["updated_at", "2015-04-09 00:37:59.207038"]]
+  [1m[35m (149.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Qui occaecati porro exercitationem."], ["body", "Magni aperiam consequatur ut laborum numquam est debitis. Laudantium recusandae corrupti et beatae illum sequi. Id omnis nesciunt mollitia fugit aliquam minima. Enim ab minima omnis iusto aliquam excepturi exercitationem. Animi hic eum voluptatem."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:37:59.362761"], ["updated_at", "2015-04-09 00:37:59.362761"]]
+  [1m[36m (149.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Sed ducimus eius."], ["body", "Repellat accusamus quisquam ex consequatur officiis. Aliquid voluptate non quaerat esse similique iusto expedita. Vel minima amet. Eaque sed facere nesciunt."], ["user_id", 1], ["question_id", 6], ["created_at", "2015-04-09 00:37:59.518614"], ["updated_at", "2015-04-09 00:37:59.518614"]]
+  [1m[35m (172.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Quam sunt aut quisquam nemo et."], ["body", "Facere et quos nihil commodi voluptas recusandae. Tenetur facilis ut ratione qui nam magnam. Ducimus vel quaerat sunt ea quisquam ea."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:37:59.697029"], ["updated_at", "2015-04-09 00:37:59.697029"]]
+  [1m[36m (171.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Laudantium eum non rerum aspernatur."], ["body", "Quidem qui officia inventore neque fuga aut. Culpa est quod repellat cupiditate aperiam temporibus et. Sed incidunt pariatur repellat quod distinctio explicabo maxime. Deserunt dolores temporibus consequatur eius qui sequi voluptate."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:37:59.874263"], ["updated_at", "2015-04-09 00:37:59.874263"]]
+  [1m[35m (173.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Rerum in dolorem esse qui."], ["body", "Sit voluptas nisi. Voluptas odit dolor ducimus fuga magni dolorem ut. Quas consequatur maiores et velit cupiditate. Autem qui architecto."], ["user_id", 1], ["question_id", 7], ["created_at", "2015-04-09 00:38:00.053144"], ["updated_at", "2015-04-09 00:38:00.053144"]]
+  [1m[36m (150.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Itaque dolorem."], ["body", "Et occaecati eum in eaque qui nulla tenetur. Iste rerum voluptatem molestiae dolorem excepturi. Similique dolorem vel id doloribus in delectus reiciendis. Ipsam excepturi dolor dicta similique exercitationem fuga. Dolorem dicta deleniti totam in culpa voluptatibus explicabo."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:38:00.210083"], ["updated_at", "2015-04-09 00:38:00.210083"]]
+  [1m[35m (149.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Eaque non delectus ut quia laudantium veniam."], ["body", "Delectus id neque fugiat. Est et et odio qui. Hic earum magnam dignissimos amet. Dolore voluptatibus et nihil. Est alias nemo."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:38:00.364936"], ["updated_at", "2015-04-09 00:38:00.364936"]]
+  [1m[36m (150.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Harum corrupti ut."], ["body", "Exercitationem et atque quia. Quas sit enim ipsum dignissimos explicabo ea animi. Consectetur unde voluptatem nihil quis. Nihil dolores quas quam dolore assumenda deleniti amet. Rerum eaque amet pariatur dignissimos qui."], ["user_id", 1], ["question_id", 8], ["created_at", "2015-04-09 00:38:00.520581"], ["updated_at", "2015-04-09 00:38:00.520581"]]
+  [1m[35m (151.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Nesciunt aut incidunt suscipit assumenda."], ["body", "Atque ab labore sed quisquam ex laborum explicabo. Quis debitis optio. Quidem odit reiciendis quasi praesentium sed ea."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:38:00.677989"], ["updated_at", "2015-04-09 00:38:00.677989"]]
+  [1m[36m (149.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Distinctio consequatur molestiae libero id impedit repudiandae."], ["body", "Veritatis quibusdam et dolores. Quaerat nihil illum eius at culpa iure. Nam aliquid quia. Aut odio ex. Ullam voluptates eligendi magnam dolores hic reiciendis non."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:38:00.833642"], ["updated_at", "2015-04-09 00:38:00.833642"]]
+  [1m[35m (149.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Fuga rerum repellat rem deserunt eveniet."], ["body", "Eaque sit aut doloribus possimus. Atque non odio magni id et soluta. Reprehenderit minus et possimus voluptates explicabo assumenda. Quos modi dolor eos enim."], ["user_id", 1], ["question_id", 9], ["created_at", "2015-04-09 00:38:00.989785"], ["updated_at", "2015-04-09 00:38:00.989785"]]
+  [1m[36m (149.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Quo voluptatibus similique in qui."], ["body", "Eum enim alias. Ut molestiae error provident officia. Similique dolorem et facere. Sed temporibus quisquam."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:38:01.146237"], ["updated_at", "2015-04-09 00:38:01.146237"]]
+  [1m[35m (171.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Earum repellat."], ["body", "Est sit sit eos a ad ab atque. Aut illum et non optio ut qui delectus. Magnam qui suscipit quia rerum repellat. Aut sint aut dignissimos. Voluptas quae animi rerum atque dignissimos cupiditate error."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:38:01.324029"], ["updated_at", "2015-04-09 00:38:01.324029"]]
+  [1m[36m (151.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Assumenda perferendis voluptatum similique."], ["body", "Illum ut corrupti architecto consequuntur. Quas delectus sunt in dolor. Dolorum est qui fugit ut quasi inventore modi. Odio enim nihil ut. Qui esse natus."], ["user_id", 1], ["question_id", 10], ["created_at", "2015-04-09 00:38:01.481984"], ["updated_at", "2015-04-09 00:38:01.481984"]]
+  [1m[35m (149.7ms)[0m  commit transaction
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:38:38 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (3239.4ms)
+Completed 500 Internal Server Error in 3318ms
+
+ActionView::Template::Error (Missing partial users/_navbar, application/_navbar with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/jfr/Desktop/stack-overflow/app/views"
+):
+     6: </head>
+     7: <body>
+     8: 
+     9: <%= render 'navbar' %>
+    10: <%= yield %>
+    11: 
+    12: </body>
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (19.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:42:17 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (5.6ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (Missing partial users/_navbar, application/_navbar with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/jfr/Desktop/stack-overflow/app/views"
+):
+     6: </head>
+     7: <body>
+     8: 
+     9: <%= render 'navbar' %>
+    10: <%= yield %>
+    11: 
+    12: </body>
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.8ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (19.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:42:19 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (Missing partial users/_navbar, application/_navbar with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/jfr/Desktop/stack-overflow/app/views"
+):
+     6: </head>
+     7: <body>
+     8: 
+     9: <%= render 'navbar' %>
+    10: <%= yield %>
+    11: 
+    12: </body>
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.0ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (19.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:44:00 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (39.1ms)
+  Rendered users/_navbar.html.erb (7.5ms)
+Completed 500 Internal Server Error in 50ms
+
+ActionView::Template::Error (undefined local variable or method `root_path' for #<#<Class:0x00000003c52e18>:0x007f48fc128828>):
+     6:     <%= link_to "Login", new_session_path %>
+     7:     <%= link_to "Create Account", new_user_path %>
+     8:   <% end %>
+     9:   <%= link_to "Home", root_path %>
+    10: </div>
+  app/views/users/_navbar.html.erb:9:in `_app_views_users__navbar_html_erb__4505382575262229176_69975728410600'
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.9ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (18.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:44:14 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (5.1ms)
+  Rendered users/_navbar.html.erb (12.1ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined local variable or method `root_path' for #<#<Class:0x00000003c52e18>:0x007f48fcbc4ac0>):
+     6:     <%= link_to "Login", new_session_path %>
+     7:     <%= link_to "Create Account", new_user_path %>
+     8:   <% end %>
+     9:   <%= link_to "Home", root_path %>
+    10: </div>
+  app/views/users/_navbar.html.erb:9:in `_app_views_users__navbar_html_erb__4505382575262229176_69975728410600'
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (30.8ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (50.1ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:44:15 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (4.5ms)
+  Rendered users/_navbar.html.erb (10.8ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined local variable or method `root_path' for #<#<Class:0x00000003c52e18>:0x00000003b72868>):
+     6:     <%= link_to "Login", new_session_path %>
+     7:     <%= link_to "Create Account", new_user_path %>
+     8:   <% end %>
+     9:   <%= link_to "Home", root_path %>
+    10: </div>
+  app/views/users/_navbar.html.erb:9:in `_app_views_users__navbar_html_erb__4505382575262229176_69975728410600'
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (18.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-04-08 20:44:17 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (5.2ms)
+  Rendered users/_navbar.html.erb (13.1ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (undefined local variable or method `root_path' for #<#<Class:0x00000003c52e18>:0x007f48fcc05840>):
+     6:     <%= link_to "Login", new_session_path %>
+     7:     <%= link_to "Create Account", new_user_path %>
+     8:   <% end %>
+     9:   <%= link_to "Home", root_path %>
+    10: </div>
+  app/views/users/_navbar.html.erb:9:in `_app_views_users__navbar_html_erb__4505382575262229176_69975728410600'
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__4478292434038091381_31033420'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (41.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (51.8ms)

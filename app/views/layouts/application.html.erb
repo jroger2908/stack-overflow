@@ -11,17 +11,17 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to image_tag("notstackoverflow.png", size:"173x40"), root_path %></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left search-nav" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right vert_align_nav">
         <% if current_user %>
-          <li><%= button_to "Logout", session_path, method: :delete, class: 'btn btn-link', id: 'logout-button' %></li>
+          <li><%= button_to "Logout", session_path, method: :delete, class: 'btn btn-link' %></li>
         <% else %>
           <li><%= link_to "Login", new_session_path %></li>
           <li><%= link_to "Create Account", new_user_path %></li>

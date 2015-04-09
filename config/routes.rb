@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
-    resources :answers, only: [:create, :update, :destroy] do
+    resources :answers, only: [:create, :edit, :update, :destroy] do
       resources :commments, only: [:create, :destroy]
       resources :votes, only: [:create, :destroy]
     end

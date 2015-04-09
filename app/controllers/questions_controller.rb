@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  def index 
+  def index
      @questions = Question.all
      @questions = @questions.where(user_id: params[:user_id]) if params[:user_id]
   end
@@ -10,15 +10,14 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: session[:id])
-    @question = Question.new(question_params.merge({user: @user}))
+    @question = current_user.questions.new(question_params)
 
-    if @question.save 
+    if @question.save
       redirect_to question_path(@question)
     else
       @errors = "Your question is invalid. Please try again"
 
-      redirect_to root_path
+      render "new"
     end
   end
 
@@ -47,7 +46,7 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(params[:id])
     @question.destroy
 
-    redirect_to root_path
+    redirect_to questions_path
   end
 
   private

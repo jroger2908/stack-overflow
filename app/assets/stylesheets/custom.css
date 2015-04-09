@@ -24,11 +24,9 @@
 }
 
 .show_question_wrap {
- border-top: solid;
- border-color: lightgray;
- border-top-width: 1px;
- padding-top: 5px;
- padding-bottom: 5px;
+  border-top: 1px solid lightgray;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .show_question_wrap div {

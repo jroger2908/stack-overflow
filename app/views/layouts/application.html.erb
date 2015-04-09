@@ -6,7 +6,16 @@
 </head>
 <body>
 
-<%= render "navbar" %>
+<div class="navbar">
+  <p>SEARCH BAR PLACEHOLDER</p>
+  <% if current_user %>
+    <%= link_to "Logout", session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Login", new_session_path %>
+    <%= link_to "Create Account", new_user_path %>
+  <% end %>
+</div>
+
 <%= yield %>
 
 </body>

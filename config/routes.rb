@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
 
   resources :users, except: [:show]
 
-  resources :users, only: [:show] do 
+  resources :users, only: [:show] do
     resources :questions, only: [:index]
   end
 

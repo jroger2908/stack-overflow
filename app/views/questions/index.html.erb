@@ -1,6 +1,5 @@
-<h1>Questions index</h1>
-
 <div class="container">
+  <h3>All Questions</h3>
   <% @questions.each do |question| %>
     <div class="row show_question_wrap">
       <div class="col-sm-2 show_question_stats_wrap">
@@ -13,16 +12,20 @@
         <p><%= link_to question.title, question_path(question) %></p>
         <p><%= question.body %> </p>
       </div>
-      <div class="col-sm-2 row">
-        <p><%= link_to question.user.username, user_path(question.user) %></p>
-
-        <div class=".col-sm-6"><%= image_tag("user-placeholder.jpg", size: "40x40") %></div>
-        <div class=".col-sm-6">
-          <p class="prof_sm_text">Location: <%= question.user.location %></p>
-          <p class="prof_sm_text">Questions: <%= question.user.questions.count %></p>
-          <p class="prof_sm_text">Answers: <%= question.user.answers.count %></p>
+      <div class="col-sm-2">
+        <%= link_to question.user.username, user_path(question.user) %>
+        <p class="prof_sm_text">asked <%= distance_of_time_in_words(question.updated_at, Time.now) %> ago</p>
+        <div class="row">
+            <div class="col-sm-4">
+              <%= image_tag("user-placeholder.jpg", size: "40x40") %>
+            </div>
+            <div class="col-sm-8">
+              <p class="prof_sm_text">Location: <%= question.user.location %></p>
+              <p class="prof_sm_text">Questions: <%= question.user.questions.count %></p>
+              <p class="prof_sm_text">Answers: <%= question.user.answers.count %></p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   <% end %>
 </div>

@@ -43,3 +43,21 @@
 .center_align {
   text-align: center;
 }
+
+.login_box {
+  padding-top: 30px;
+  width: 183px;
+  margin: 0 auto;
+}
+
+.login_box h3 {
+  text-align: center;
+}
+
+.login_field {
+  margin: 15px;
+}
+
+.sign_in_button {
+  float: right;
+}

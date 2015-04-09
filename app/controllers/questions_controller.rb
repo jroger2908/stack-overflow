@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
 
   def create
     @user = User.find_by(id: session[:id])
-    @question = Question.new(question_params).merge({user: @user})
+    @question = Question.new(question_params.merge({user: @user}))
 
     if @question.save 
       redirect_to question_path(@question)
@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find_by(params[:id])
+    @question = Question.find_by(id: params[:id])
   end
 
   def edit

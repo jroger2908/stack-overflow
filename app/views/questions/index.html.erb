@@ -2,9 +2,27 @@
 
 <div class="container">
   <% @questions.each do |question| %>
-    <div>
-      <p><%= link_to question.title, question_path(question) %> | <%= question.votes %></p>
-      <p><%= question.body %> </p> 
+    <div class="row show_question_wrap">
+      <div class="col-sm-2 show_question_stats_wrap">
+        <p><%= question.votes.count %></p>
+        <p>votes</p>
+        <p><%= question.answers.count %></p>
+        <p>answers</p>
+      </div>
+      <div class="col-sm-8 show_question_text_wrap">
+        <p><%= link_to question.title, question_path(question) %></p>
+        <p><%= question.body %> </p>
+      </div>
+      <div class="col-sm-2 row">
+        <p><%= link_to question.user.username, user_path(question.user) %></p>
+
+        <div class=".col-sm-6"><%= image_tag("user-placeholder.jpg", size: "40x40") %></div>
+        <div class=".col-sm-6">
+          <p class="prof_sm_text">Location: <%= question.user.location %></p>
+          <p class="prof_sm_text">Questions: <%= question.user.questions.count %></p>
+          <p class="prof_sm_text">Answers: <%= question.user.answers.count %></p>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

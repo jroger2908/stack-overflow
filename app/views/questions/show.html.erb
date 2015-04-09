@@ -6,12 +6,10 @@
 
   <div>
     <% @question.answers.each do |answer| %>
-    <!-- <p><% answer.comments.each do |comments| %></p> -->
       <div>
         <h3><%= answer.title %></h3>
         <p><%= answer.body %></p>
       </div>
-    <!-- <p><% end %></p> -->
     <% end %>
   </div>
 </div>

@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
 
-  def index
-    @questions = Question.all
+  def index 
+     @questions = Question.all
+     @questions = @questions.where(user_id: params[:user_id]) if params[:user_id]
   end
 
   def new

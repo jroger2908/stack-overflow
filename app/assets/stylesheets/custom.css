@@ -1,0 +1,32 @@
+
+
+.btn-link {
+  padding: 15px;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+}
+
+.prof_sm_text {
+  font-size: .7em;
+  margin: 0px;
+}
+
+.show_question_wrap {
+ border-top: solid;
+ border-color: lightgray;
+ border-top-width: 1px;
+ padding-top: 5px;
+ padding-bottom: 5px;
+}
+
+.show_question_wrap div {
+  padding: 10px;
+}
+
+.show_question_stats_wrap p {
+  text-align: center;
+  font-size: .9em;
+}

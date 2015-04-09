@@ -1,0 +1,19 @@
+<%= form_for @comment do |f| %>
+  <% if @errors %>
+    <ul>
+      <% @errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+    <%= f.hidden :commentable_id, :value => @question.id %>
+    <%= f.hidden :commentable_type, :value => @question %>
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  let!(:test_question) {Question.new(title: "Fake answer", body: "Some text", user_id: 1)}
-  let!(:answer) {Answer.new(title: "Fake answer", body: "Some text", question_id: 1, user_id: 2)}
+  let(:test_question) {Question.new(title: "Fake answer", body: "Some text", user_id: 1)}
+  let(:answer) {Answer.new(title: "Fake answer", body: "Some text", question_id: 1, user_id: 2)}
 
   describe "#validations" do
     it "has a title" do

@@ -1,15 +1,15 @@
 class AnswersController < ApplicationController
-  
-  def create
-    @question = Question.find_by(id: params[:question_id])
-    @answer = Answer.new(answer_params.merge({user: @user}))
 
-    if @answer.save 
-      redirect_to question_path(@question)
+  before_action :set_question
+
+  def create
+    @answer = @question.answers.new(answers_params.merge(user: @user))
+
+    if @answer.save
+      redirect_to question_path(params[:question_id])
     else
       @errors = "Your answer is invalid. Please try again"
-
-      redirect_to root_path
+      render "new"
     end
   end
 
@@ -18,26 +18,29 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @question = Question.find_by(id: params[:question_id])
     @answer = Answer.find_by(id: params[:id])
 
     if @answer && @answer.update(answer_params)
-      redirect_to @question
+      redirect_to question_path(params[:question_id])
     else
       render 'edit'
     end
   end
 
   def destroy
-    @answer = Answer.find_by(id: params[:id])
-    @question = Question.find_by(id: @answer.question_id)
-    @answer.destroy
-    redirect_to @question
+    Answer.find_by(id: params[:id]).destroy
+    redirect_to question_path(params[:question_id])
+  end
+
+  protected
+
+  def set_question
+    @question = Question.find_by(id: params[:question_id])
   end
 
   private
 
   def answer_params
-    params.require(:answer).permit(:title, :body, :question_id)
+    params.require(:answer).permit(:body, :question_id)
   end
 end

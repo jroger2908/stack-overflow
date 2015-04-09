@@ -4,13 +4,9 @@
     body {
       background-color: white;
     }
-    h1 {
-      color: maroon;
-      margin-left: 40px;
-    } 
     div.question-container {
       position:relative;
-      width: 80%;
+      width: 100%;
       background-color: #D6E4FF;
       margin-bottom: 0.8em;
     }
@@ -34,8 +30,7 @@
 
     #content-box {
       position: relative;
-      width: 45%;
-      left: 5em;
+      width: 100%;
       display: inline-block;
     }
 
@@ -49,10 +44,9 @@
       display: inline-block;
       padding: 1em;
     }
-
-
   </style>
 </head>
+
 <div class="container">
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
@@ -63,8 +57,8 @@
   </nav>
 
   <div id="content-box">
-    <h1><%= link_to "Question:", questions_path %>
-    <% @questions.each do |question| %></h1>
+    <h3>Top Questions</h3>
+    <% @questions.each do |question| %>
     <div class="question-container">
       <div class="question arguments">
         <p>Votes: <%= question.votes.count %></p>

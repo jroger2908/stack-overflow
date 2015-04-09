@@ -6,7 +6,7 @@
 		h1 {
 			color: maroon;
 			margin-left: 40px;
-		} 
+		}
 		div.question-container {
 			position:relative;
 			width: 80%;
@@ -102,7 +102,8 @@
 			<p>Votes: <%= answer.votes.count %></p>
 		</div>
 		<div class="question diplay">
-			<p><%= link_to answer.title, question_path(answer.question)  %></p>
+			<p><%= link_to answer.question.title, question_path(answer.question)  %></p>
+			<p><%= answer.body %></p>
 		</div>
 	</div>
 	<% end %>

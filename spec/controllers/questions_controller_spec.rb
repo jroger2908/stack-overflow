@@ -6,7 +6,7 @@ RSpec.describe QuestionsController, type: :controller do
   describe "GET #index" do
     it "assigns all questions to @questions" do
       get :index
-      expect(assigns(:questions)).to eq([question])
+      expect(assigns(:questions)).to include(question)
     end
     it "renders the :index view" do
       get :index
@@ -30,7 +30,7 @@ RSpec.describe QuestionsController, type: :controller do
     it "deletes the question" do
       expect{
         delete :destroy, {id: question.to_param}
-      }.to change(Question, :count).by(-1) 
+      }.to change(Question, :count).by(-1)
     end
   end
 

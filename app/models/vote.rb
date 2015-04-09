@@ -2,7 +2,9 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :votable, polymorphic: :true
 
-  validates :user, uniqueness: {scope: [:votable_id, :votable_type]}
+  validates :user, uniqueness: {scope: [:votable_id, :votable_type]},
+                    presence: :true
+
   validate :is_not_own_votable?
 
   protected

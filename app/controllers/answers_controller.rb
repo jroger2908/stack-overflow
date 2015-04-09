@@ -1,7 +1,16 @@
 class AnswersController < ApplicationController
   
   def create
-    
+    @question = Question.find_by(id: params[:question_id])
+    @answer = Answer.new(answers_params.merge({user: @user}))
+
+    if @answer.save 
+      redirect_to question_path(@question)
+    else
+      @errors = "Your answer is invalid. Please try again"
+
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -20,6 +29,6 @@ class AnswersController < ApplicationController
   private
 
   def answers_params
-    params.require(:answer).permit(:title, :body)
+    params.require(:answer).permit(:title, :body, :question_id)
   end
 end

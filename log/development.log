@@ -1,0 +1,888 @@
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 12:31:55 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.8ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (1.4ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (44.8ms)
+Completed 500 Internal Server Error in 195ms
+
+ActionView::Template::Error (undefined method `answers_path' for #<#<Class:0x007fca44ba1c68>:0x007fca44bb1460>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253356846940'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (11.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (45.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (33.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (63.9ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 12:33:28 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (14.0ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined local variable or method `question_answers' for #<#<Class:0x007fca44ba1c68>:0x007fca42f6c6d8>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253357438440'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (38.2ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 12:33:37 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (53.0ms)
+Completed 500 Internal Server Error in 57ms
+
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"answers", :id=>"3"} missing required keys: [:question_id]):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253388806100'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (37.7ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:20:00 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 35ms
+
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"answers", :id=>"3"} missing required keys: [:question_id]):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253388806100'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (75.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (103.8ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:20:42 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.2ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253355814960'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (38.1ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:20:54 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"answers", :question_id=>nil} missing required keys: [:question_id]):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@answer) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253358616440'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (37.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (44.5ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:21:00 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253339281140'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (21.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (47.3ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:21:12 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question.id) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253358192760'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (20.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (44.0ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:21:23 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `to_params' for #<Question:0x007fca488cd998>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question.to_params) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253388676340'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (61.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (80.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (19.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (39.8ms)
+
+
+Started GET "/questions/3" for ::1 at 2015-04-09 13:21:31 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (3) LIMIT 1
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question.id) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253341126680'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (37.9ms)
+
+
+Started GET "/" for ::1 at 2015-04-09 13:22:37 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (25.0ms)
+  [1m[36mUser Load (11.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 224ms (Views: 210.8ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/" for ::1 at 2015-04-09 13:22:41 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-04-09 13:22:44 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:22:54 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question.id) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253341126680'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (21.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (41.1ms)
+
+
+Started GET "/questions" for ::1 at 2015-04-09 13:23:03 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (8.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:23:08 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question.id) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253341126680'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (38.1ms)
+
+
+Started GET "/questions/8" for ::1 at 2015-04-09 13:23:12 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (8) LIMIT 1
+  [1m[36mAnswer Load (0.5ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (66.4ms)
+Completed 500 Internal Server Error in 70ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(@question.id) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253341126680'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (18.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (40.2ms)
+
+
+Started GET "/questions" for ::1 at 2015-04-09 13:23:56 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (5.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:23:58 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (9.1ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(12) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253358341120'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (16.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (38.7ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:24:18 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (66.0ms)
+Completed 500 Internal Server Error in 70ms
+
+ActionView::Template::Error (undefined local variable or method `jose' for #<#<Class:0x007fca44ba1c68>:0x007fca4897fb20>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, question_answers_path(jose) do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253389018080'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (31.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (37.8ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:24:30 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (14.0ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined method `answers_path' for #<#<Class:0x007fca44ba1c68>:0x007fca44e4a078>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253357974380'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (18.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (39.1ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:24:42 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  Rendered questions/show.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 5ms
+
+SyntaxError (/Users/crgr33/Desktop/our_challenges/stack-overflow/app/views/questions/show.html.erb:20: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...  form_for @answer answers_path do |f| @output_buffer.safe_a...
+...                               ^):
+  app/views/questions/show.html.erb:20: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (18.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (41.1ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:24:48 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (14.4ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (undefined method `answers_path' for #<#<Class:0x007fca44ba1c68>:0x007fca4703a840>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer  do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253375768340'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (20.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.2ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (45.2ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:25:52 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (14.5ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (undefined method `answers_path' for #<#<Class:0x007fca44ba1c68>:0x007fca44c0aab0>):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253356793880'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (20.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (46.6ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:26:27 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"answers", :id=>"12"} missing required keys: [:question_id]):
+    17: <%= link_to "Edit Question", edit_question_path(@question) %>
+    18: 
+    19: 
+    20: <%= form_for @answer, url: question_answers_path do |f| %>
+    21:   <% if @errors %>
+    22:     <ul>
+    23:       <% @errors.full_messages.each do |error| %>
+  app/views/questions/show.html.erb:20:in `_app_views_questions_show_html_erb___2183196237799043092_70253348349500'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.6ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (57.8ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (82.9ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (19.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (40.7ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:26:36 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (570.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 575ms (Views: 573.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:27:05 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (18.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:27:32 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:28:22 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (4.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:35:43 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (7.5ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (1.6ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (79.6ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 161ms (Views: 108.0ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:37:46 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (8.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1
+  [1m[36mAnswer Load (1.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (8.2ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 106ms (Views: 53.5ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:37:51 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE (12) LIMIT 1[0m
+  [1m[35mAnswer Load (0.5ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered questions/show.html.erb within layouts/application (9.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:38:11 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (6.6ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 12]]
+  [1m[36mAnswer Load (1.5ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 12]]
+  Rendered questions/show.html.erb within layouts/application (7.7ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 95ms (Views: 36.5ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/questions/12/answers" for ::1 at 2015-04-09 13:38:31 -0400
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rYSB+aTPMHGGIbU5UwbUqk9ll27A0ysBL/QrG4tbWvIvm+rBO6YjeLpibk9QsjGqTjDBa0cOhNI1nfB04UW6GQ==", "answer"=>{"title"=>"Answer", "question_id"=>"12", "body"=>"Jose can't answer questions in english"}, "commit"=>"Create Answer", "question_id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 12]]
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `merge' for #<Answer:0x007fca47113398>):
+  app/controllers/answers_controller.rb:5:in `create'
+
+
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/crgr33/.rbenv/versions/2.0.0-p481/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (59.1ms)
+
+
+Started POST "/questions/12/answers" for ::1 at 2015-04-09 13:39:03 -0400
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rYSB+aTPMHGGIbU5UwbUqk9ll27A0ysBL/QrG4tbWvIvm+rBO6YjeLpibk9QsjGqTjDBa0cOhNI1nfB04UW6GQ==", "answer"=>{"title"=>"Answer", "question_id"=>"12", "body"=>"Jose can't answer questions in english"}, "commit"=>"Create Answer", "question_id"=>"12"}
+  [1m[35mQuestion Load (6.9ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 12]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Answer"], ["body", "Jose can't answer questions in english"], ["question_id", 12], ["created_at", "2015-04-09 17:39:03.284444"], ["updated_at", "2015-04-09 17:39:03.284444"]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions/12
+Completed 302 Found in 153ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:39:03 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 12]]
+  [1m[36mAnswer Load (6.4ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 12]]
+  Rendered questions/show.html.erb within layouts/application (17.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 49ms (Views: 40.8ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/questions/12/answers" for ::1 at 2015-04-09 13:39:11 -0400
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8hWeDXfQl49y+4SAgdZcMi0rbJnqdd4Mmsj2bcoM+8dwCvU16LmEhk64X/aCYrkyLH46nG2ocd+AoS0CoBIbLA==", "answer"=>{"title"=>"Jose's answer", "question_id"=>"12", "body"=>"can't speak english"}, "commit"=>"Create Answer", "question_id"=>"12"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Jose's answer"], ["body", "can't speak english"], ["question_id", 12], ["created_at", "2015-04-09 17:39:11.963522"], ["updated_at", "2015-04-09 17:39:11.963522"]]
+  [1m[35m (8.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/questions/12
+Completed 302 Found in 14ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/questions/12" for ::1 at 2015-04-09 13:39:11 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 12]]
+  Rendered questions/show.html.erb within layouts/application (4.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-04-09 13:39:32 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (18.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 37ms (Views: 36.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/questions/2" for ::1 at 2015-04-09 13:39:34 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 2]]
+  Rendered questions/show.html.erb within layouts/application (3.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 57ms (Views: 55.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/questions/2/answers" for ::1 at 2015-04-09 13:39:46 -0400
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M2sdLis2uxTXPTAqsR78lKwDxnOb4R7/o0RJoKUFwJmxdHYWtF+oHet+61yyqhmUrVaQdhw8sSy5LZLPzxsgcg==", "answer"=>{"title"=>"Asieng icsum liberios", "question_id"=>"2", "body"=>"aleskrjoaiwfenjvsbrfioweaubfjd"}, "commit"=>"Create Answer", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "answers" ("title", "body", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Asieng icsum liberios"], ["body", "aleskrjoaiwfenjvsbrfioweaubfjd"], ["question_id", 2], ["created_at", "2015-04-09 17:39:46.817340"], ["updated_at", "2015-04-09 17:39:46.817340"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/questions/2
+Completed 302 Found in 7ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/questions/2" for ::1 at 2015-04-09 13:39:46 -0400
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?  [["question_id", 2]]
+  Rendered questions/show.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-04-09 13:39:57 -0400
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (5.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.4ms)

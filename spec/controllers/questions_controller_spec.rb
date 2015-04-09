@@ -25,4 +25,13 @@ RSpec.describe QuestionsController, type: :controller do
       response.should render_template :show
     end
   end
+
+  describe "DELETE destroy" do
+    it "deletes the question" do
+      expect{
+        delete :destroy, {id: question.to_param}
+      }.to change(Question, :count).by(-1) 
+    end
+  end
+
 end

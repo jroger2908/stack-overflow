@@ -18,7 +18,16 @@ describe "everything" do
     it "should have a button that will take us to a page to submit a new question" do
       visit '/'
       click_link 'Ask a Question'
-      expect(page).to have_selector ('#create-question-btn')
+      expect(page).to have_css ('#create-question-btn')
+    end
+  end
+
+   describe "Clicking All Questions" do
+    it "should take you to view all questions" do
+      visit '/'
+
+      click_link ('All Questions')
+      expect(page).to have_content('All Questions')
     end
   end
 
@@ -52,6 +61,33 @@ describe "everything" do
       click_button 'Create Answer'
       answer_body = page.all('p.answer').last
       expect(answer_body).to have_content ('I am answering the question')
+    end
+  end
+
+  describe "Logout" do
+   
+    it "changes the navbar after logout" do
+      visit '/'
+
+      click_button 'Logout'
+      expect(page).to have_content ('Login')
+      expect(page).to have_content ('Create Account')
+    end
+  end
+
+  describe "login" do
+   
+    it "it takes you to the user homepage" do
+      visit '/'
+
+      click_button 'Logout'
+      click_link 'Login'
+      within '.login_box' do
+        fill_in 'session[username]', :with => 'lionking'
+        fill_in 'session[password]', :with => 'lionking'
+      end
+
+      expect(page).to have_content('Submit Login Create Account Sign In Username Password')
     end
   end
 

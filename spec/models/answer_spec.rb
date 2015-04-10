@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
+  let!(:user) {User.create!(name: 'VanVan',location: 'Cuba',username: 'aquinomas',password: 'aquinomas')}
   let(:test_question) {Question.new(title: "Fake answer", body: "Some text", user_id: 1)}
   let(:answer) {Answer.new(title: "Fake answer", body: "Some text", question_id: 1, user_id: 2)}
 

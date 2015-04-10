@@ -1,11 +1,12 @@
 <head>
    <style>
       #question-box {
-      border-bottom: solid;
-      border-width: 1px;
+      /* border-bottom: solid;
+      border-width: 2px;*/
       }
-      #question-box h2 {
-      border-bottom: solid;
+      h2 {
+      width: 50%;
+      margin: auto; 
       border-width: 1px;
       }
       .edit-delete li {
@@ -34,85 +35,87 @@
       width: 50%
       }
       .answer-votes {
-         text-align: center;
-         vertical-align: middle;
-         height: 40px;
-         padding-bottom: 10px;
+      text-align: center;
+      vertical-align: middle;
+      height: 40px;
+      padding-bottom: 10px;
       }
-
-
       .answer-votes p{
-        text-align: center;
-        margin: auto;
-        font-size: 1em;
-        
+      text-align: center;
+      margin: auto;
+      font-size: 1em;
       }
-
       .answer-body p{
-          /*border: solid;*/
-          padding-bottom: auto;
-   
+      /*border: solid;*/
+      padding-bottom: auto;
       }
       .answer-body ul li{
-         padding: 0px;
-         margin: 0px;
-         text-align: center;
-         vertical-align: middle;
-         padding-right: 15px;
-       
+      padding: 0px;
+      margin: 0px;
+      text-align: center;
+      vertical-align: middle;
+      padding-right: 15px;
       }
       .delete {
-          padding: 0px;
-         margin: 0px;
+      padding: 0px;
+      margin: 0px;
       }
-
       .arrow-up {
-          padding: 0px;
-         margin: 0px;
-         width: 0; 
-   height: 0; 
-   border-left: 10px solid transparent;
-   border-right: 10px solid transparent;
-   
-   border-bottom: 10px solid #f00;
+      padding: 0px;
+      margin: 0px;
+      width: 0; 
+      height: 0; 
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #f00;
       }
-
       .arrow-down {
-          padding: 0px;
-         margin: 0px;
-   width: 0; 
-   height: 0; 
-   border-left: 10px solid transparent;
-   border-right: 10px solid transparent;
-   
-   border-top: 10px solid #f00;
-}
-
-
-
-  
-
+      padding: 0px;
+      margin: 0px;
+      width: 0; 
+      height: 0; 
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #f00;
+      }
+      .arrow-big-up { 
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 25px solid #f00;
+      }
+      .arrow-big-down { 
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #f00;
+      }
    </style>
 </head>
+<h2> <%= @question.title %> </h2>
 <div class="container">
-   <div id="question-box">
-      <h2> <%= @question.title %> </h2>
-      <p> <%= @question.body %> </p>
-      <ul class ="edit-delete">
-         <li> <%= link_to "Add comment", new_question_comment_path(@question)%> </li>
-         <li>    <%= link_to "Edit Question", edit_question_path(@question) %> </li>
-      </ul>
-      <h4>
-      Answer: 
-      <h4>
+<div id ="answers-box">
+<div id ="question-box">
+   <div class="question row">
+      <div class="col-sm-1 answer-votes">
+         <%= button_to "UP", question_votes_path(@question), method: 'post',class: 'arrow-up arrow-big-up btn btn-link' %>
+         <p><%=@question.vote_count %></p>
+         <%= button_to "DOWN", question_votes_path(@question), method: 'delete',class: 'arrow-down arrow-big-down btn btn-link' %>
+      </div>
+      <div class="col-sm-11 answer-body">
+         <p><%= @question.body %> </p>
+         <ul class ="edit-delete">
+            <li><%= link_to "Edit", edit_question_path(@question) %></li>
+            <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+            <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
+         </ul>
+      </div>
+      <h3>Answers:</h3>
    </div>
-   <div id ="answers-box">
+   <div id ="question-box">
       <% @question.answers.each do |answer| %>
       <div class="question row">
          <div class="col-sm-1 answer-votes">
-
             <%= button_to "UP", question_answer_votes_path(@question,answer), method: 'post',class: 'arrow-up btn btn-link' %>
-           <p><%=answer.vote_count %></p>
+            <p><%=answer.vote_count %></p>
             <%= button_to "DOWN", question_answer_votes_path(@question,answer), method: 'delete',class: 'arrow-down btn btn-link' %>
          </div>
          <div class="col-sm-11 answer-body">
@@ -145,8 +148,4 @@
       </div>
       <% end %>
    </div>
-</div>
-<div class="input-group">
-   <textarea class="form-control custom-control" rows="3" style="resize:none"></textarea>     
-   <span class="input-group-addon btn btn-primary">Send</span>
 </div>

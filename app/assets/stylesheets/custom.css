@@ -157,4 +157,8 @@ div.arguments p{
   height: 300px;
 }
 
+.top_border_profile {
+  border-top: 1px solid lightgray;
+  padding-top: 20px;
+}
 

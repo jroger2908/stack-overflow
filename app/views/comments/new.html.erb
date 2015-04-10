@@ -1,18 +1,22 @@
-<% targets = @answer.present? ? [@question, @answer, @comment] : [@question, @comment] %>
-<%= form_for targets do |f| %>
-  <% if @errors %>
-    <ul>
-      <% @errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<div class="container">
+  <div class="login_box large_edit">
+  <h3>Add Comment</h3>
+  <% targets = @answer.present? ? [@question, @answer, @comment] : [@question, @comment] %>
+  <%= form_for targets do |f| %>
+    <% if @errors %>
+      <ul>
+        <% @errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-  <div class="form-group">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="form-group login_field">
+      <%= f.text_area :content, :class => "text_box_wide" %>
+    </div>
+    <div class="form-group sign_in_button">
+      <%= f.submit %>
+    </div>
+    </div>
+  <% end %>
+</div>

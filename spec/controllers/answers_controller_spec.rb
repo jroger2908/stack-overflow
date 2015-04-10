@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
+
   let!(:user) {User.create!(name: 'VanVan',location: 'Cuba',username: 'aquinomas',password: 'aquinomas')}
   let!(:question) {Question.create!(title: "Test title", body: "Test body", user: user)}
   let!(:test_answer) {Answer.create!(body: "Stuff in the body", question: question, user: user) }

@@ -21,6 +21,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right vert_align_nav">
         <% if current_user %>
+          <li><%= button_to "Profile", user_path(current_user),method: :get, class: 'btn btn-link' %></li>
           <li><%= button_to "Logout", session_path, method: :delete, class: 'btn btn-link' %></li>
         <% else %>
           <li><%= link_to "Login", new_session_path %></li>

@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let!(:user) {User.create!(name: 'VanVan',location: 'Cuba',username: 'aquinomas',password: 'aquinomas')}
-  let(:question) {Question.create(title: "Fake answer", body: "Some text", user: user)}
-  let(:answer) {Answer.create( body: "Some text", question: question, user: user)}
+  let!(:question) {Question.create(title: "Fake answer", body: "Some text", user: user)}
+  let!(:answer) {Answer.create( body: "Some text", question: question, user: user)}
+
 
   describe "#validations" do
 

@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
   end
 
   def create
+    logger.info(comment_params)
     @comment = @commentable.comments.new(comment_params.merge({user: current_user}))
-    if @comment.save
+    if @comment.save!
       redirect_to @question
     else
       render :new
@@ -31,6 +32,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body,:commentable_id,:commentable_type)
+    params.require(:comment).permit(:content,:commentable_id,:commentable_type)
   end
 end

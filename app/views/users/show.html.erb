@@ -52,6 +52,7 @@
 
 	</style>
 </head>
+
 <link rel="stylesheet" href="/css/application.css">
 <div class="container">
 
@@ -88,17 +89,7 @@
 	</div>
 
 
-<div id="content-box">
-	<h1><%= link_to "Answers:" %></h1>
-	<% @answers.each do |answer| %>
-	<div class="question-container">
-		<div class="question arguments">
-			<p>Votes: <%= answer.votes.count %></p>
-		</div>
-		<div class="question diplay">
-			<p></p>
-			<p><%= answer.body %></p>
-		</div>
+
 
 
 <div class="user_profile_answer_box">
@@ -112,10 +103,9 @@
 	      </div>
 	      <div class="col-sm-10 show_question_text_wrap">
 	        <p><%= link_to answer.question.title, question_path(answer.question) %></p>
-	        <p><%= answer.body %> </p>
+	        <p><%= answer.body %></p>
 	      </div>
 	    </div>
 	  <% end %>
-
 	</div>
 </div>

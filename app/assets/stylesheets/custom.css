@@ -142,5 +142,19 @@ div.arguments p{
 .sign_in_button {
   margin-top: 10px;
   float: right;
-
 }
+
+.large_edit {
+  width: 515px;
+}
+
+.text_wide {
+  width: 500px;
+}
+
+.text_box_wide {
+  width: 500px;
+  height: 300px;
+}
+
+

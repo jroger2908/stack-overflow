@@ -14,10 +14,9 @@
 ActiveRecord::Schema.define(version: 20150408200332) do
 
   create_table "answers", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "question_id"
-    t.integer  "user_id"
+    t.text     "body",        null: false
+    t.integer  "question_id", null: false
+    t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -32,9 +31,9 @@ ActiveRecord::Schema.define(version: 20150408200332) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "user_id"
+    t.string   "title",      null: false
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

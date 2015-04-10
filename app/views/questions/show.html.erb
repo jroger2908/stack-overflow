@@ -102,7 +102,7 @@
          <%= button_to "DOWN", question_votes_path(@question), method: 'delete',class: 'arrow-down arrow-big-down btn btn-link' %>
       </div>
       <div class="col-sm-11 answer-body">
-         <p><%= @question.body %> </p>
+         <p class="question-body"><%= @question.body %> </p>
          <ul class ="edit-delete">
             <li><%= link_to "Edit", edit_question_path(@question) %></li>
             <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
@@ -120,7 +120,7 @@
             <%= button_to "DOWN", question_answer_votes_path(@question,answer), method: 'delete',class: 'arrow-down btn btn-link' %>
          </div>
          <div class="col-sm-11 answer-body">
-            <p><%= answer.body %> </p>
+            <p class="answer"><%= answer.body %> </p>
             <ul class ="edit-delete">
                <li><%= link_to "Edit", edit_question_answer_path(@question,answer) %></li>
                <li><%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
@@ -130,7 +130,7 @@
       </div>
       <% end %>
    </div>
-   <div class="new-question">
+   <div>
       <h2>Your Answer</h2>
       <%= form_for @answer, url: question_answers_path(@question) do |f| %>
       <% if @errors %>
@@ -141,7 +141,8 @@
       </ul>
       <% end %>
       <%= f.hidden_field :question_id, :value => @question.id %>
-      <div class="form-group">
+      <div id="answer-form" class="form-group">
+         <%= f.label :body %>
          <%= f.text_area :body, :rows => "10",  cols: '80%' %>
       </div>
       <div class="form-group">

@@ -1,9 +1,17 @@
-<h1>Sign In</h1>
+<div class="login_box">
+  <h3>Sign In</h3>
 
-<%= form_for(:session, url: session_path) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Sign in" %>
-<% end %>
+  <%= form_for(:session, url: session_path) do |f| %>
+    <div class="login_field">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+    <div class="login_field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="login_field sign_in_button">
+      <%= f.submit "Sign in" %>
+    </div>
+  <% end %>
+</div>

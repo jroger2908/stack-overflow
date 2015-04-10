@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
+  let!(:user) {User.create!(name: 'VanVan',location: 'Cuba',username: 'aquinomas',password: 'aquinomas')}
   let!(:question) {Question.create!(title: "Test title", body: "Test body", user_id: 1)}
 
   describe "GET #index" do

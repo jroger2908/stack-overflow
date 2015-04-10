@@ -18,7 +18,16 @@ describe "everything" do
     it "should have a button that will take us to a page to submit a new question" do
       visit '/'
       click_link 'Ask a Question'
-      expect(page).to have_selector ('#create-question-btn')
+      expect(page).to have_css ('#create-question-btn')
+    end
+  end
+
+   describe "Clicking All Questions" do
+    it "should take you to view all questions" do
+      visit '/'
+
+      click_link ('All Questions')
+      expect(page).to have_content('All Questions')
     end
   end
 

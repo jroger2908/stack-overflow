@@ -165,6 +165,7 @@
          </div>
          <% end %>
       </div>
+
       <div>
          <h2>Your Answer</h2>
          <%= form_for @answer, url: question_answers_path(@question) do |f| %>
@@ -172,6 +173,16 @@
          <ul>
             <% @errors.full_messages.each do |error| %>
             <li><%= error %></li>
+
+      <div class="col-sm-11 answer-body">
+         <p class="question-body"><%= @question.body %> </p>
+         <ul class ="edit-delete">
+
+            <% if current_user.id == @question.user_id %>
+            <li><%= link_to "Edit", edit_question_path(@question) %></li>
+            <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+            <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
+
             <% end %>
          </ul>
          <% end %>
@@ -180,12 +191,14 @@
             <%= f.label :body %>
             <%= f.text_area :body, :rows => "10",  cols: '80%' %>
          </div>
+
          <div class="form-group">
             <%= f.submit %>
+
          </div>
          <% end %>
       </div>
    </div>
 </div>
-5
+
 

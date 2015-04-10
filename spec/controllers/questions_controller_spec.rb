@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
   let!(:user) {User.create!(name: 'VanVan',location: 'Cuba',username: 'aquinomas',password: 'aquinomas')}
-  let!(:question) {Question.create!(title: "Test title", body: "Test body", user_id: 1)}
+  let!(:question) {Question.create!(title: "Test title", body: "Test body", user: user)}
 
   describe "GET #index" do
     it "assigns all questions to @questions" do

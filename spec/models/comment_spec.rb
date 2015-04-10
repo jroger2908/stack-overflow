@@ -5,6 +5,7 @@ RSpec.describe Comment, type: :model do
   let!(:question) {Question.create(title: "Fake answer", body: "Some text", user: user)}
   let!(:answer) {Answer.create( body: "Some text", question: question, user: user)}
 
+
   describe "#validations" do
 
   	it "is invalid when comment is not associated to a question or answer" do

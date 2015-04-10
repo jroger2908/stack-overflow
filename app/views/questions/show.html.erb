@@ -1,9 +1,13 @@
-<head>
+ <head>
    <style>
       #question-box {
-      /* border-bottom: solid;
-      border-width: 2px;*/
+      width: 100%;
+      border-bottom: solid;
+      border-color: grey;
+      border-width: 1px;
       }
+      #answer-box {
+      width: 100%;}
       h2 {
       width: 50%;
       margin: auto; 
@@ -19,17 +23,24 @@
       /*border: solid;*/
       margin-bottom: 0px;
       }
-      #answers-box {
-      border-bottom: solid;
-      border-width: 1px;
+      #big-box {
       }
-      .question {
-      border-bottom: solid;
-      border-color: grey;
-      border-width: 1px;
+      #question {
       min-height: 80px;
       padding-bottom: 10px;
       padding-top: 10px;
+      width: 100%
+      }
+      .answer {
+      min-height: 50px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      width: 100%;
+      border-bottom: solid;
+      border-color: grey;
+      border-width: 1px;
+      margin-right: 30px;
+      margin-left: 10px;
       }
       .container {
       width: 50%
@@ -88,67 +99,93 @@
       border-right: 25px solid transparent;
       border-top: 25px solid #f00;
       }
+      .comment {
+      padding-left: 50px;
+      margin-left: 50px;
+      border-top: 1px dashed ;
+      }
+      /*  .container {
+      width: 100%
+      }*/
    </style>
 </head>
 <h2> <%= @question.title %> </h2>
 <div class="container">
+   <div id ="big-box">
+      <div id ="question-box">
+         <div >
+            <div class="row", id="question" >
+               <div class="col-sm-1 answer-votes">
+                  <%= button_to "UP", question_votes_path(@question), method: 'post',class: 'arrow-up arrow-big-up btn btn-link' %>
+                  <p><%=@question.vote_count %></p>
+                  <%= button_to "DOWN", question_votes_path(@question), method: 'delete',class: 'arrow-down arrow-big-down btn btn-link' %>
+               </div>
+               <div class="col-sm-11 answer-body">
+                  <p class="question-body"><%= @question.body %> </p>
+                  <ul class ="edit-delete">
+                     <li><%= link_to "Edit", edit_question_path(@question) %></li>
+                     <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+                     <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
+                  </ul>
+               </div>
+            </div>
+            <% if @question.comments.count > 0 %>
+            <% @question.comments.each do |comment| %>
+            <div class="comment">
+                 <%=  comment.content %>
+            </div>
+            <% end %>
+            <% end %>
+         </div>
+      </div>
+      <div id ="answer-box">
+         <% @question.answers.each do |answer| %>
+         <div class="answer row">
+            <div class="col-sm-1 answer-votes">
+               <%= button_to "UP", question_answer_votes_path(@question,answer), method: 'post',class: 'arrow-up btn btn-link' %>
+               <p><%=answer.vote_count %></p>
+               <%= button_to "DOWN", question_answer_votes_path(@question,answer), method: 'delete',class: 'arrow-down btn btn-link' %>
+            </div>
+            <div class="col-sm-11 answer-body">
+               <p ><%= answer.body %> </p>
+               <ul class ="edit-delete">
+                  <li><%= link_to "Edit", edit_question_answer_path(@question,answer) %></li>
+                  <li><%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+                  <li><%= link_to "Add comment", new_question_answer_comment_path(@question, answer)%></li>
+               </ul>
 
-<div id ="answers-box">
-<div id ="question-box">
-   <div class="question row">
-      <div class="col-sm-1 answer-votes">
-         <%= button_to "UP", question_votes_path(@question), method: 'post',class: 'arrow-up arrow-big-up btn btn-link' %>
-         <p><%=@question.vote_count %></p>
-         <%= button_to "DOWN", question_votes_path(@question), method: 'delete',class: 'arrow-down arrow-big-down btn btn-link' %>
-      </div>
-      <div class="col-sm-11 answer-body">
-         <p class="question-body"><%= @question.body %> </p>
-         <ul class ="edit-delete">
-            <li><%= link_to "Edit", edit_question_path(@question) %></li>
-            <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
-            <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
-         </ul>
-      </div>
-      <h3>Answers:</h3>
-   </div>
-   <div id ="question-box">
-      <% @question.answers.each do |answer| %>
-      <div class="question row">
-         <div class="col-sm-1 answer-votes">
-            <%= button_to "UP", question_answer_votes_path(@question,answer), method: 'post',class: 'arrow-up btn btn-link' %>
-            <p><%=answer.vote_count %></p>
-            <%= button_to "DOWN", question_answer_votes_path(@question,answer), method: 'delete',class: 'arrow-down btn btn-link' %>
+               <% if answer.comments.count > 0 %>
+               <% answer.comments.each do |comment| %>
+               <div class="comment">
+                 <%=  comment.content %>
+               </div>
+               <% end %>
+               <% end %>
+            </div>
          </div>
-         <div class="col-sm-11 answer-body">
-            <p class="answer"><%= answer.body %> </p>
-            <ul class ="edit-delete">
-               <li><%= link_to "Edit", edit_question_answer_path(@question,answer) %></li>
-               <li><%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
-               <li><%= link_to "Add comment", new_question_answer_comment_path(@question, answer)%></li>
-            </ul>
-         </div>
-      </div>
-      <% end %>
-   </div>
-   <div>
-      <h2>Your Answer</h2>
-      <%= form_for @answer, url: question_answers_path(@question) do |f| %>
-      <% if @errors %>
-      <ul>
-         <% @errors.full_messages.each do |error| %>
-         <li><%= error %></li>
          <% end %>
-      </ul>
-      <% end %>
-      <%= f.hidden_field :question_id, :value => @question.id %>
-      <div id="answer-form" class="form-group">
-         <%= f.label :body %>
-         <%= f.text_area :body, :rows => "10",  cols: '80%' %>
       </div>
-      <div class="form-group">
-         <%= f.submit %>
-  
+      <div>
+         <h2>Your Answer</h2>
+         <%= form_for @answer, url: question_answers_path(@question) do |f| %>
+         <% if @errors %>
+         <ul>
+            <% @errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+            <% end %>
+         </ul>
+         <% end %>
+         <%= f.hidden_field :question_id, :value => @question.id %>
+         <div id="answer-form" class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, :rows => "10",  cols: '80%' %>
+         </div>
+         <div class="form-group">
+            <%= f.submit %>
+         </div>
+         <% end %>
       </div>
-      <% end %>
    </div>
 </div>
+5
+

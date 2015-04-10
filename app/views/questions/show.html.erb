@@ -1,42 +1,153 @@
+<head>
+   <style>
+      #question-box {
+      /* border-bottom: solid;
+      border-width: 2px;*/
+      }
+      h2 {
+      width: 50%;
+      margin: auto; 
+      border-width: 1px;
+      }
+      .edit-delete li {
+      display: inline-block;
+      padding-right: 10px;
+      margin: auto;
+      bottom: 0;
+      }
+      .edit-delete {
+      /*border: solid;*/
+      margin-bottom: 0px;
+      }
+      #answers-box {
+      border-bottom: solid;
+      border-width: 1px;
+      }
+      .question {
+      border-bottom: solid;
+      border-color: grey;
+      border-width: 1px;
+      min-height: 80px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      }
+      .container {
+      width: 50%
+      }
+      .answer-votes {
+      text-align: center;
+      vertical-align: middle;
+      height: 40px;
+      padding-bottom: 10px;
+      }
+      .answer-votes p{
+      text-align: center;
+      margin: auto;
+      font-size: 1em;
+      }
+      .answer-body p{
+      /*border: solid;*/
+      padding-bottom: auto;
+      }
+      .answer-body ul li{
+      padding: 0px;
+      margin: 0px;
+      text-align: center;
+      vertical-align: middle;
+      padding-right: 15px;
+      }
+      .delete {
+      padding: 0px;
+      margin: 0px;
+      }
+      .arrow-up {
+      padding: 0px;
+      margin: 0px;
+      width: 0; 
+      height: 0; 
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #f00;
+      }
+      .arrow-down {
+      padding: 0px;
+      margin: 0px;
+      width: 0; 
+      height: 0; 
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #f00;
+      }
+      .arrow-big-up { 
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 25px solid #f00;
+      }
+      .arrow-big-down { 
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #f00;
+      }
+   </style>
+</head>
+<h2> <%= @question.title %> </h2>
 <div class="container">
-  <div class="#">
-    <h2><%= @question.title %><h2>
-      <p id="question-body"><%= @question.body %></p>
-      <p><%= link_to "Add comment", new_question_comment_path(@question)%></p>
-  </div>
 
-  <div>
-    <% @question.answers.each do |answer| %>
-      <div>
-        <p class="answer"><%= answer.body %> </p>
-        <p><%= link_to "Edit", edit_question_answer_path(@question,answer) %>
-           <%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'btn btn-link', id: 'logout-button' %><%= link_to "Add comment", new_question_answer_comment_path(@question, answer)%>
-        </p>
+<div id ="answers-box">
+<div id ="question-box">
+   <div class="question row">
+      <div class="col-sm-1 answer-votes">
+         <%= button_to "UP", question_votes_path(@question), method: 'post',class: 'arrow-up arrow-big-up btn btn-link' %>
+         <p><%=@question.vote_count %></p>
+         <%= button_to "DOWN", question_votes_path(@question), method: 'delete',class: 'arrow-down arrow-big-down btn btn-link' %>
       </div>
-    <% end %>
-  </div>
-</div>
-
-<%= link_to "Edit Question", edit_question_path(@question) %>
-
-<div class="table">
-  <h2>Your Answer</h2>
-<%= form_for @answer, url: question_answers_path(@question) do |f| %>
-  <% if @errors %>
-    <ul>
-      <% @errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+      <div class="col-sm-11 answer-body">
+         <p><%= @question.body %> </p>
+         <ul class ="edit-delete">
+            <li><%= link_to "Edit", edit_question_path(@question) %></li>
+            <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+            <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
+         </ul>
+      </div>
+      <h3>Answers:</h3>
+   </div>
+   <div id ="question-box">
+      <% @question.answers.each do |answer| %>
+      <div class="question row">
+         <div class="col-sm-1 answer-votes">
+            <%= button_to "UP", question_answer_votes_path(@question,answer), method: 'post',class: 'arrow-up btn btn-link' %>
+            <p><%=answer.vote_count %></p>
+            <%= button_to "DOWN", question_answer_votes_path(@question,answer), method: 'delete',class: 'arrow-down btn btn-link' %>
+         </div>
+         <div class="col-sm-11 answer-body">
+            <p><%= answer.body %> </p>
+            <ul class ="edit-delete">
+               <li><%= link_to "Edit", edit_question_answer_path(@question,answer) %></li>
+               <li><%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+               <li><%= link_to "Add comment", new_question_answer_comment_path(@question, answer)%></li>
+            </ul>
+         </div>
+      </div>
       <% end %>
-    </ul>
-  <% end %>
-
-  <%= f.hidden_field :question_id, :value => @question.id %>
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <div class="form-group">
-    <%= f.submit %>
-  </div>
-<% end %>
+   </div>
+   <div class="new-question">
+      <h2>Your Answer</h2>
+      <%= form_for @answer, url: question_answers_path(@question) do |f| %>
+      <% if @errors %>
+      <ul>
+         <% @errors.full_messages.each do |error| %>
+         <li><%= error %></li>
+         <% end %>
+      </ul>
+      <% end %>
+      <%= f.hidden_field :question_id, :value => @question.id %>
+      <div class="form-group">
+         <%= f.text_area :body, :rows => "10",  cols: '80%' %>
+      </div>
+      <div class="form-group">
+         <%= f.submit %>
+  
+      </div>
+      <% end %>
+   </div>
 </div>

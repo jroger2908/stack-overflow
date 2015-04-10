@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: [:create, :edit, :update, :destroy] do
       resources :comments, only: [:new, :create, :destroy]
-      resources :votes, only: [:create, :destroy]
+      resource :votes, only: [:create, :destroy]
     end
     resources :comments, only: [:new, :create, :destroy]
-    resources :votes, only: [:create, :destroy]
+    resource :votes, only: [:create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

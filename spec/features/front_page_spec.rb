@@ -64,6 +64,33 @@ describe "everything" do
     end
   end
 
+  describe "Logout" do
+   
+    it "changes the navbar after logout" do
+      visit '/'
+
+      click_button 'Logout'
+      expect(page).to have_content ('Login')
+      expect(page).to have_content ('Create Account')
+    end
+  end
+
+  describe "login" do
+   
+    it "it takes you to the user homepage" do
+      visit '/'
+
+      click_button 'Logout'
+      click_link 'Login'
+      within '.login_box' do
+        fill_in 'session[username]', :with => 'lionking'
+        fill_in 'session[password]', :with => 'lionking'
+      end
+
+      expect(page).to have_content('Submit Login Create Account Sign In Username Password')
+    end
+  end
+
 end
 
 

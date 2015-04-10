@@ -8,4 +8,10 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :votable
   has_many :comments, as: :commentable
 
+  def vote_count
+  	score = 0
+    self.votes.each {|vote| score += vote.score }
+    score
+  end
+
 end

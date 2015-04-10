@@ -11,9 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # if user_params[:password] != user_params[:password_confirmation]
-    #   render "new"
-    # end
+    
     @user = User.new(user_params)
     logger.info(@user)
     if @user.save

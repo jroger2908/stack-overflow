@@ -1,23 +1,23 @@
 require 'faker'
 
-# vanvan = User.create!(name: 'VanVan',
-# 		     location: 'Cuba',
-# 		     username: 'aquinomas',
-# 		     password: 'aquinomas')
+vanvan = User.create!(name: 'VanVan',
+		     location: 'Cuba',
+		     username: 'aquinomas',
+		     password: 'aquinomas')
 
-# # vanvan = User.all.first
 
-# 10.times do
-# 	vanvan.questions.create!(title: Faker::Lorem.sentence(2),
-# 		                       body: Faker::Lorem.paragraph(4))
-# end
 
-# Question.all.each do |question|
-# 	3.times do
-# 	 question.answers.create!(body: Faker::Lorem.paragraph(2),
-# 			                     user: vanvan)
-# 	end
-# end
+10.times do
+	vanvan.questions.create!(title: Faker::Lorem.sentence(2),
+		                       body: Faker::Lorem.paragraph(4))
+end
+
+Question.all.each do |question|
+	3.times do
+	 question.answers.create!(body: Faker::Lorem.paragraph(2),
+			                     user: vanvan)
+	end
+end
 
 
 lionking = User.create!(name: 'lionking',
@@ -25,7 +25,6 @@ lionking = User.create!(name: 'lionking',
 		     username: 'lionking',
 		     password: 'lionking')
 
-# lionking = User.all.first
 
 10.times do
 	lionking.questions.create!(title: Faker::Lorem.sentence(2),

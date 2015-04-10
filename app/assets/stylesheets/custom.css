@@ -153,8 +153,9 @@ div.arguments p{
 }
 
 .text_box_wide {
+  margin-top: 10px;
   width: 500px;
-  height: 300px;
+  height: 250px;
 }
 
 .top_border_profile {
@@ -162,3 +163,6 @@ div.arguments p{
   padding-top: 20px;
 }
 
+.comment_header {
+  margin-left: 100px;
+}

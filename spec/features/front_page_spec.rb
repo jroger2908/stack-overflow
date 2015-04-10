@@ -1,0 +1,71 @@
+describe "everything" do
+  let!(:user) {User.create!(name: "jose", location: "colombia", username: "jose", password: "colombia") }
+  before do
+    visit '/session/new'
+    fill_in 'Username', :with => 'jose'
+    fill_in 'Password', :with => 'colombia'
+    click_button "Sign in"
+  end
+
+describe "the front page", :type => :feature do
+  #before :each do
+    #User.make(:email => 'user@example.com', :password => 'password')
+  #end
+
+  it "should show the front page" do
+    visit '/'
+    # within("#session") do
+    #   fill_in 'Email', :with => 'user@example.com'
+    #   fill_in 'Password', :with => 'password'
+    # end
+    # click_button 'Sign in'
+    expect(page).to have_content 'Top Questions'
+  end
+end
+
+describe "The Front Page" do
+  it "should have a button that will take us to a page to submit a new question" do
+    visit '/'
+    click_link 'Ask a Question'
+    expect(page).to have_selector ('#create-question-btn')
+  end
+end
+
+describe "Create Question Page" do
+
+  it "visit ask question form" do
+    visit '/questions/new'
+
+    within(".new_question") do
+      fill_in 'Title', :with => 'Title of post'
+      fill_in 'Body', :with => 'This is the body of a post'
+    end
+
+    click_button 'Create Question'
+    question_body = page.find('p#question-body')
+    expect(question_body).to have_content ('This is the body of a post')
+  end
+end
+
+describe "Create an answer to a question" do
+
+  let!(:question) {Question.create!(title: "Test title", body: "Test body", user: user)}
+  let!(:answer) {Answer.create(body: "Body of the question", question: question, user: user) }
+ 
+  it "visit ask question form" do
+    visit '/questions/1'
+
+    within(".table") do
+      fill_in 'Body', :with => 'I am answering the question'
+    end
+
+    click_button 'Create Answer'
+    answer_body = page.all('p.answer').last
+    expect(answer_body).to have_content ('I am answering the question')
+  end
+end
+
+end
+
+
+

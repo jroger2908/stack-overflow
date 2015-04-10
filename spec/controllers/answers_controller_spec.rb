@@ -8,14 +8,22 @@ RSpec.describe AnswersController, type: :controller do
   describe "POST create" do
     context "with valid attributes" do
       xit "creates a new answer" do
-        expect{
-          post :create, { answer: {body: "Answering the question", question: question, user: user}.to_param}
-        }.to change(Answer,:count).by(1)
+      expect {
+        post :create,
+        { question_id: question.to_param,
+          answer: {
+           body:"This is my answer.", question: question, user: user
+        }}.to_param
+      }.to change{ question.answers.count }.by(1)
       end
       
       xit "redirects to the same question page" do
-        post :create, contact: Factory.attributes_for(:contact)
-        response.should redirect_to Contact.last
+        post :create,
+        { question_id: question.id,
+          answer: {
+           body:"This is my answer."
+        }}
+        response.should redirect_to question.last
       end
     end
     

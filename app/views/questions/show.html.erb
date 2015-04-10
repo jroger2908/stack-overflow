@@ -129,7 +129,9 @@
                      <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
                      <% end %>
                      <% end %>
+                     <% if current_user %>
                      <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
+                     <% end %>
                   </ul>
                </div>
             </div>
@@ -159,9 +161,10 @@
                   <li><%= button_to "Delete", question_answer_path(@question,answer), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
                   <% end %>
                   <% end %>
+                  <% if current_user %>
                   <li><%= link_to "Add comment", new_question_answer_comment_path(@question, answer)%></li>
                </ul>
-
+                  <% end %>
                <% if answer.comments.count > 0 %>
                <% answer.comments.each do |comment| %>
                <div class="comment">
@@ -173,7 +176,7 @@
          </div>
          <% end %>
       </div>
-
+      <% if current_user %>
       <div>
          <h2>Your Answer</h2>
          <%= form_for @answer, url: question_answers_path(@question) do |f| %>
@@ -188,7 +191,9 @@
             <% if current_user.id == @question.user_id %>
                <li><%= link_to "Edit", edit_question_path(@question) %></li>
                <li><%= button_to "Delete", question_path(@question), method: 'delete',class: 'delete btn btn-link', id: 'logout-button' %></li>
+               <% if current_user %>
                <li><%= link_to "Add comment", new_question_comment_path(@question)%></li>
+               <% end %>
             <% end %>
          </ul>
          <% end %>
@@ -202,6 +207,7 @@
             <%= f.submit %>
 
          </div>
+         <% end %>
          <% end %>
       </div>
    </div>

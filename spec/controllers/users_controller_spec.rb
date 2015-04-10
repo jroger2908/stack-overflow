@@ -33,15 +33,19 @@ RSpec.describe UsersController, type: :controller do
   end
 
    describe "POST #create" do
-    it "on valid user input redictes to user profile page" do
-      get :create, {}
-      response.should render_template :new
-    end
+    let!(:user_new) {User.new(name: 'user_new',location: 'tanzania',username: 'user_new',password: 'user_new')}
+    
+    # it "on valid user input redictes to user profile page" do
+    #   get :create, {}
+    #   response.should render_template :new
+    # end
 
     it "on invalid user renders new" do
-      get :create, {user: user.to_param}
+
+      get :create, user: user_new.attributes.except("id")
       response.should render_template :new
     end
+    
   end
   
   
